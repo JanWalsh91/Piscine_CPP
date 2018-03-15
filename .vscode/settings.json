@@ -27,6 +27,12 @@
 		"ratio": "cpp",
 		"tuple": "cpp",
 		"type_traits": "cpp",
-		"utility": "cpp"
+		"utility": "cpp",
+		"istream": "cpp",
+		"__split_buffer": "cpp",
+		"atomic": "cpp",
+		"ios": "cpp",
+		"system_error": "cpp",
+		"vector": "cpp"
 	}
 }
