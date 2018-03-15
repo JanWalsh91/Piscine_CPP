@@ -1,0 +1,29 @@
+NAME = megaphone
+
+CC = clang++
+
+CFLAGS = -Wall -Werror -Wextra
+
+SRC_NAME = megaphone.cpp
+
+OBJ_NAME = $(SRC_NAME:.cpp=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJ_NAME)
+	@$(CC) $(CFLAGS) $^ -o $@
+
+$(OBJ)%.o: $(SRC)%.c
+	@$(CC) $(CFLAGS) -o $@ -c $<
+
+clean:
+	@-/bin/rm -f $(OBJ_NAME)
+	@echo "\033[0;32mFiles deleted\033[0m"
+
+fclean: clean
+	@-/bin/rm -f $(NAME)
+	@echo "\033[0;32mCleaned\033[0m"
+
+re: fclean all
+
+.PHONY: all clean fclean re
