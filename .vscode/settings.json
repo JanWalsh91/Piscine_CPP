@@ -33,6 +33,7 @@
 		"atomic": "cpp",
 		"ios": "cpp",
 		"system_error": "cpp",
-		"vector": "cpp"
+		"vector": "cpp",
+		"__functional_03": "cpp"
 	}
 }
