@@ -1,15 +1,16 @@
 #ifndef SCAVTRAP_H
 # define SCAVTRAP_H
 
+#include "ClapTrap.hpp"
 #include <string>
 
-class ScavTrap {
+class ScavTrap : public virtual ClapTrap {
 
 	private:
 		std::string _name;
 		int _maxHitPoints;
-		int _hitPoints;
 		int _maxEnergyPoints;
+		int _hitPoints;
 		int _energyPoints;
 		int _level;
 		int _meleeDmg;
@@ -25,8 +26,6 @@ class ScavTrap {
 
 		void rangedAttack(std::string & target);
 		void meleeAttack(std::string & target);
-		void takeDamage(unsigned int dmg);
-		void beRepaired(unsigned int hitPoints);
 		void challengeNewcomer(std::string const & target);
 };
 

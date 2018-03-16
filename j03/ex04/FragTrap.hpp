@@ -1,9 +1,11 @@
 #ifndef FRAGTRAP_H
 # define FRAGTRAP_H
 
+#include "ClapTrap.hpp"
+
 #include <string>
 
-class FragTrap {
+class FragTrap : public virtual ClapTrap {
 
 	private:
 		std::string _name;
@@ -25,8 +27,6 @@ class FragTrap {
 
 		void rangedAttack(std::string & target);
 		void meleeAttack(std::string & target);
-		void takeDamage(unsigned int dmg);
-		void beRepaired(unsigned int hitPoints);
 		void vaulthunter_dot_exe(std::string const & target);
 };
 

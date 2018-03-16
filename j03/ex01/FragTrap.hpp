@@ -6,24 +6,23 @@
 class FragTrap {
 
 	private:
+		std::string _name;
 		int _maxHitPoints;
+		int _hitPoints;
 		int _maxEnergyPoints;
+		int _energyPoints;
+		int _level;
+		int _meleeDmg;
+		int _rangedDmg;
+		int _armor;
 	
 	public:
 		FragTrap( std::string name );
 		FragTrap( FragTrap const & fragTrap );
-		~FragTrap( void );
+		virtual ~FragTrap( void );
 
 		FragTrap &    operator=( FragTrap const & rhs );
 
-		std::string name;
-		int hitPoints;
-		int energyPoints;
-		int level;
-		int meleeDmg;
-		int rangedDmg;
-		int armor;
-		
 		void rangedAttack(std::string & target);
 		void meleeAttack(std::string & target);
 		void takeDamage(unsigned int dmg);
