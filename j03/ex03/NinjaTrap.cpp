@@ -9,12 +9,12 @@ NinjaTrap::NinjaTrap( std::string name ) : ClapTrap( name ) {
 	this->_meleeDmg = 60;
 	this->_rangedDmg = 5;
 	this->_armor = 0;
-	std::cout << "NINJ4-TP " << this->_name << " created ! " << std::endl;
+	std::cout << "NINJ4-TP " << this->_name << " created ! Hehehe ..." << std::endl;
 	return ;
 };
 
 NinjaTrap::~NinjaTrap( void ) {
-	std::cout << "NINJ4-TP " << this->_name << " destroyed ! " << std::endl;
+	std::cout << "NINJ4-TP " << this->_name << " destroyed ! Splat !" << std::endl;
 	return ;
 };
 
@@ -31,6 +31,22 @@ NinjaTrap &    NinjaTrap::operator=( NinjaTrap const & rhs ) {
 	return (*this);
 };
 
+void NinjaTrap::rangedAttack(std::string & target) {
+	if (this->_hitPoints == 0) {
+		std::cout << "NINJ4-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
+		return ;
+	}
+	std::cout << "NINJ4-TP " << this->_name << " attacks " << target << " at range with crossbow, causing " << this->_rangedDmg << " points of damage !" << std::endl;
+};
+
+void NinjaTrap::meleeAttack(std::string & target) {
+	if (this->_hitPoints == 0) {
+		std::cout << "NINJ4-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
+		return ;
+	}
+	std::cout << "NINJ4-TP " << this->_name << " melee attacks " << target << " with its poison daggers, causing " << this->_meleeDmg << " points of damage !" << std::endl;
+};
+
 void NinjaTrap::ninjaShoebox( FragTrap & fragTrap ) {
 	std::cout << "NINJ4-TP " << this->getName() << " puts " << fragTrap.getName() << " in a shoebox ! " << std::endl;
 	return ;
@@ -45,3 +61,4 @@ void NinjaTrap::ninjaShoebox( NinjaTrap & ninjaTrap ) {
 	std::cout << "NINJ4-TP " << this->getName() << " makes " << ninjaTrap.getName() << " dance on a shoebox ! " << std::endl;
 	return ;
 };
+

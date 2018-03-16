@@ -9,7 +9,7 @@ FragTrap::FragTrap( std::string name ) : ClapTrap( name ) {
 	this->_meleeDmg = 30;
 	this->_rangedDmg = 20;
 	this->_armor = 5;
-	std::cout << "FR4G-TP " << this->_name << " created ! " << std::endl;
+	std::cout << "FR4G-TP " << this->_name << " created ! " << this->_hitPoints << std::endl;
 	return ;
 };
 

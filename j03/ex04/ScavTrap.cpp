@@ -36,3 +36,19 @@ void ScavTrap::challengeNewcomer(std::string const & target) {
 	std::cout << "SC4V-TP " << this->_name << " challenges " << target << " " << challenge[i] << std::endl;
 
 };
+
+void ScavTrap::rangedAttack(std::string & target) {
+	if (this->_hitPoints == 0) {
+		std::cout << "SC4V-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
+		return ;
+	}
+	std::cout << "SC4V-TP " << this->_name << " attacks " << target << " at range with its unicorn gun blaster, causing " << this->_rangedDmg << " points of damage !" << std::endl;
+};
+
+void ScavTrap::meleeAttack(std::string & target) {
+	if (this->_hitPoints == 0) {
+		std::cout << "SC4V-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
+		return ;
+	}
+	std::cout << "SC4V-TP " << this->_name << " melee attacks " << target << " with its rainbow dagger, causing " << this->_meleeDmg << " points of damage !" << std::endl;
+};

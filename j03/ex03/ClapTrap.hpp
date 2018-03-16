@@ -26,8 +26,8 @@ class ClapTrap {
 		virtual ~ClapTrap( void );
 		
 		std::string getName( void );
-		void rangedAttack(std::string & target);
-		void meleeAttack(std::string & target);
+		virtual void rangedAttack(std::string & target);
+		virtual void meleeAttack(std::string & target);
 		void takeDamage(unsigned int dmg);
 		void beRepaired(unsigned int hitPoints);
 

@@ -43,6 +43,10 @@ int    main ( void ) {
 	max.vaulthunter_dot_exe(targets[std::rand() % 5]);
 	max.meleeAttack(targets[std::rand() % 5]);
 	max.rangedAttack(targets[std::rand() % 5]);
+	max.takeDamage(60);
+	max.takeDamage(2);
+	max.takeDamage(40);
+	max.takeDamage(20);
 
 	return (0);
 }

@@ -6,17 +6,6 @@
 
 class ScavTrap : public virtual ClapTrap {
 
-	private:
-		std::string _name;
-		int _maxHitPoints;
-		int _maxEnergyPoints;
-		int _hitPoints;
-		int _energyPoints;
-		int _level;
-		int _meleeDmg;
-		int _rangedDmg;
-		int _armor;
-	
 	public:
 		ScavTrap( std::string name );
 		ScavTrap( ScavTrap const & scavTrap );
@@ -24,8 +13,8 @@ class ScavTrap : public virtual ClapTrap {
 
 		ScavTrap &    operator=( ScavTrap const & rhs );
 
-		void rangedAttack(std::string & target);
-		void meleeAttack(std::string & target);
+		virtual void rangedAttack(std::string & target);
+		virtual void meleeAttack(std::string & target);
 		void challengeNewcomer(std::string const & target);
 };
 

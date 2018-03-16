@@ -7,19 +7,8 @@
 
 #include <string>
 
-class NinjaTrap : public ClapTrap {
+class NinjaTrap : public virtual ClapTrap {
 
-	private:
-		std::string _name;
-		int _maxHitPoints;
-		int _hitPoints;
-		int _maxEnergyPoints;
-		int _energyPoints;
-		int _level;
-		int _meleeDmg;
-		int _rangedDmg;
-		int _armor;
-	
 	public:
 		NinjaTrap( std::string name );
 		NinjaTrap( NinjaTrap const & ninjaTrap );

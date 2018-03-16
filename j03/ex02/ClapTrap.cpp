@@ -70,7 +70,7 @@ void ClapTrap::takeDamage(unsigned int dmg) {
 	std::cout << "CL4P-TP " << this->_name << " takes " << dmg << " points of damage ! " << std::endl;
 	this->_hitPoints -= dmg;
 	if (this->_hitPoints <= 0) {
-		std::cout << "CL4P-TP " << this->_name << "is KO'ed ! " << std::endl;
+		std::cout << "CL4P-TP " << this->_name << " is KO'ed ! " << std::endl;
 		this->_hitPoints = 0;
 	}
 };
