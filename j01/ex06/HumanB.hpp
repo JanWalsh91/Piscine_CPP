@@ -1,5 +1,9 @@
-#include "Weapon.hpp"
-#include <string>
+#ifndef HUMAN_B_H
+# define HUMAN_B_H
+
+# include "Weapon.hpp"
+
+# include <string>
 
 class HumanB {
 	public:
@@ -10,3 +14,5 @@ class HumanB {
 		void attack( void );
 		void setWeapon( Weapon & weapon );
 };
+
+#endif

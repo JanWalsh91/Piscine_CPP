@@ -1,4 +1,7 @@
-#include <string>
+#ifndef LOGGER_H
+# define LOGGER_H
+
+# include <string>
 
 class Logger {
 	private:
@@ -8,3 +11,5 @@ class Logger {
 	public:
 		void log(std::string const & dest, std::string const & message);
 };
+
+#endif

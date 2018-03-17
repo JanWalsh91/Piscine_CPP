@@ -1,7 +1,8 @@
+#include "Brain.hpp"
+
 #include <iostream>
 #include <string>
 #include <sstream>
-#include "Brain.hpp"
 
 Brain::Brain( void ) {
 	return ;

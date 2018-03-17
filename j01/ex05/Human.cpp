@@ -1,5 +1,6 @@
 #include "Human.hpp"
 #include "Brain.hpp"
+
 #include <string>
 
 Human::Human( void ): _brain(new Brain) {

@@ -12,12 +12,10 @@ Character::Character( std::string const & name ) : _name(name), _ap(40) {
 
 Character::Character( void ) {
 	this->_weapon = NULL;
-	// std::cout << "Default constructor called" << std::endl;
 	return ;
 };
 
 Character::Character( Character const & character ) {
-	// std::cout << "Copy constructor called" << std::endl;
 	*this = character;
 	return ;
 };

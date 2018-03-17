@@ -45,7 +45,7 @@ std::string ClapTrap::getName( void ) {
 	return this->_name;
 };
 
-void ClapTrap::rangedAttack(std::string & target) {
+void ClapTrap::rangedAttack( std::string & target ) {
 	if (this->_hitPoints == 0) {
 		std::cout << "CL4P-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;
@@ -53,7 +53,7 @@ void ClapTrap::rangedAttack(std::string & target) {
 	std::cout << "CL4P-TP " << this->_name << " attacks " << target << " at range with its unicorn gun blaster, causing " << this->_rangedDmg << " points of damage !" << std::endl;
 };
 
-void ClapTrap::meleeAttack(std::string & target) {
+void ClapTrap::meleeAttack( std::string & target ) {
 	if (this->_hitPoints == 0) {
 		std::cout << "CL4P-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;
@@ -61,7 +61,7 @@ void ClapTrap::meleeAttack(std::string & target) {
 	std::cout << "CL4P-TP " << this->_name << " melee attacks " << target << " with its rainbow dagger, causing " << this->_meleeDmg << " points of damage !" << std::endl;
 };
 
-void ClapTrap::takeDamage(unsigned int dmg) {
+void ClapTrap::takeDamage( unsigned int dmg ) {
 	if (this->_hitPoints == 0) {
 		std::cout << "CL4P-TP " << this->_name << " is being tickled to death ! " << std::endl;
 		return ;
@@ -79,7 +79,7 @@ void ClapTrap::takeDamage(unsigned int dmg) {
 	}
 };
 
-void ClapTrap::beRepaired(unsigned int hitPoints) {
+void ClapTrap::beRepaired( unsigned int hitPoints ) {
 	std::cout << "CL4P-TP " << this->_name << " is repaired for " << hitPoints << " points !" << std::endl;
 	if (this->_hitPoints == 0) {
 		std::cout << "CL4P-TP " << this->_name << " is back up !" << std::endl;

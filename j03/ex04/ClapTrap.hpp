@@ -26,10 +26,10 @@ class ClapTrap {
 		virtual ~ClapTrap( void );
 		
 		std::string getName( void );
-		virtual void rangedAttack(std::string & target);
-		virtual void meleeAttack(std::string & target);
-		void takeDamage(unsigned int dmg);
-		void beRepaired(unsigned int hitPoints);
+		virtual void rangedAttack( std::string & target );
+		virtual void meleeAttack( std::string & target );
+		void takeDamage( unsigned int dmg );
+		void beRepaired( unsigned int hitPoints );
 
 		ClapTrap &    operator=( ClapTrap const & rhs );
 };

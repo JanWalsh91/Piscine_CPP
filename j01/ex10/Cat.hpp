@@ -1,3 +1,6 @@
+#ifndef CAT_H
+# define CAT_H
+
 #include <string>
 
 class Cat {
@@ -10,3 +13,5 @@ class Cat {
 
 		void handleArg( std::string arg );
 };
+
+#endif

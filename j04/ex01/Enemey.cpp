@@ -4,7 +4,6 @@
 #include <string>
 
 Enemy::Enemy( void ) {
-	// std::cout << "Default constructor called" << std::endl;
 	return ;
 };
 
@@ -13,13 +12,11 @@ Enemy::Enemy( int hp, std::string const & type ) : _hp(hp), _type(type) {
 };
 
 Enemy::Enemy( Enemy const & enemy ) {
-	// std::cout << "Copy constructor called" << std::endl;
 	*this = enemy;
 	return ;
 };
 
 Enemy::~Enemy( void ) {
-	// std::cout << "Destructor called" << std::endl;
 	return ;
 };
 

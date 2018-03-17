@@ -21,10 +21,8 @@ class Fixed {
 		Fixed	   operator-( Fixed const & rhs );
 		Fixed	   operator*( Fixed const & rhs );
 		Fixed	   operator/( Fixed const & rhs );
-		//post
 		Fixed	   operator++( int i );
 		Fixed	   operator--( int i );
-		//pre
 		Fixed &	   operator++( void );
 		Fixed &	   operator--( void );
 		bool 	   operator<( Fixed const & rhs );

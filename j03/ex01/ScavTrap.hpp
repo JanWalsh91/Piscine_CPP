@@ -23,11 +23,11 @@ class ScavTrap {
 
 		ScavTrap &    operator=( ScavTrap const & rhs );
 
-		void rangedAttack(std::string & target);
-		void meleeAttack(std::string & target);
-		void takeDamage(unsigned int dmg);
-		void beRepaired(unsigned int hitPoints);
-		void challengeNewcomer(std::string const & target);
+		void rangedAttack( std::string & target );
+		void meleeAttack( std::string & target );
+		void takeDamage( unsigned int dmg );
+		void beRepaired( unsigned int hitPoints );
+		void challengeNewcomer( std::string const & target );
 };
 
 #endif

@@ -1,3 +1,6 @@
+#ifndef PONY_H
+# define PONY_H
+
 #include <string>
 
 class Pony {
@@ -10,3 +13,5 @@ class Pony {
 		void neigh( void );
 
 };
+
+#endif

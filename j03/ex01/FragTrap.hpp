@@ -23,11 +23,11 @@ class FragTrap {
 
 		FragTrap &    operator=( FragTrap const & rhs );
 
-		void rangedAttack(std::string & target);
-		void meleeAttack(std::string & target);
-		void takeDamage(unsigned int dmg);
-		void beRepaired(unsigned int hitPoints);
-		void vaulthunter_dot_exe(std::string const & target);
+		void rangedAttack( std::string & target );
+		void meleeAttack( std::string & target );
+		void takeDamage(unsigned int dmg );
+		void beRepaired( unsigned int hitPoints );
+		void vaulthunter_dot_exe( std::string const & target );
 };
 
 #endif

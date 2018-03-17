@@ -1,4 +1,5 @@
 #include "ScavTrap.hpp"
+
 #include <iostream>
 #include <string>
 
@@ -40,7 +41,7 @@ ScavTrap &    ScavTrap::operator=( ScavTrap const & rhs ) {
 	return (*this);
 };
 
-void ScavTrap::rangedAttack(std::string & target) {
+void ScavTrap::rangedAttack( std::string & target ) {
 	if (this->_hitPoints == 0) {
 		std::cout << "SC4V-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;
@@ -48,7 +49,7 @@ void ScavTrap::rangedAttack(std::string & target) {
 	std::cout << "SC4V-TP " << this->_name << " attacks " << target << " at range with its unicorn gun blaster, causing " << this->_rangedDmg << " points of damage !" << std::endl;
 };
 
-void ScavTrap::meleeAttack(std::string & target) {
+void ScavTrap::meleeAttack( std::string & target ) {
 	if (this->_hitPoints == 0) {
 		std::cout << "SC4V-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;
@@ -56,7 +57,7 @@ void ScavTrap::meleeAttack(std::string & target) {
 	std::cout << "SC4V-TP " << this->_name << " melee attacks " << target << " with its rainbow dagger, causing " << this->_meleeDmg << " points of damage !" << std::endl;
 };
 
-void ScavTrap::takeDamage(unsigned int dmg) {
+void ScavTrap::takeDamage( unsigned int dmg ) {
 	if (this->_hitPoints == 0) {
 		std::cout << "SC4V-TP " << this->_name << " is being tickled to death ! " << std::endl;
 		return ;
@@ -74,7 +75,7 @@ void ScavTrap::takeDamage(unsigned int dmg) {
 	}
 };
 
-void ScavTrap::beRepaired(unsigned int hitPoints) {
+void ScavTrap::beRepaired( unsigned int hitPoints ) {
 	std::cout << "SC4V-TP " << this->_name << " is repaired for " << hitPoints << " points !" << std::endl;
 	if (this->_hitPoints == 0) {
 		std::cout << "SC4V-TP " << this->_name << " is back up !" << std::endl;
@@ -85,7 +86,7 @@ void ScavTrap::beRepaired(unsigned int hitPoints) {
 	}
 };
 
-void ScavTrap::challengeNewcomer(std::string const & target) {
+void ScavTrap::challengeNewcomer( std::string const & target ) {
 	if (this->_hitPoints == 0) {
 		std::cout << "SC4V-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;

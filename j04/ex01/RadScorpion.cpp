@@ -8,7 +8,6 @@ RadScorpion::RadScorpion( void ) : RadScorpion::Enemy( 80, "RadScorpion" ){
 };
 
 RadScorpion::RadScorpion( RadScorpion const & radScorpion ) {
-	// std::cout << "Copy constructor called" << std::endl;
 	*this = radScorpion;
 	return ;
 };

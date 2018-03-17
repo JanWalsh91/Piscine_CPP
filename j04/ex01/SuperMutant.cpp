@@ -8,7 +8,6 @@ SuperMutant::SuperMutant( void ) : SuperMutant::Enemy( 170, "Super Mutant" ) {
 };
 
 SuperMutant::SuperMutant( SuperMutant const & superMutant ) {
-	// std::cout << "Copy constructor called" << std::endl;
 	*this = superMutant;
 	return ;
 };

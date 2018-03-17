@@ -31,7 +31,7 @@ NinjaTrap &    NinjaTrap::operator=( NinjaTrap const & rhs ) {
 	return (*this);
 };
 
-void NinjaTrap::rangedAttack(std::string & target) {
+void NinjaTrap::rangedAttack( std::string & target ) {
 	if (this->_hitPoints == 0) {
 		std::cout << "NINJ4-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;
@@ -39,7 +39,7 @@ void NinjaTrap::rangedAttack(std::string & target) {
 	std::cout << "NINJ4-TP " << this->_name << " attacks " << target << " at range with crossbow, causing " << this->_rangedDmg << " points of damage !" << std::endl;
 };
 
-void NinjaTrap::meleeAttack(std::string & target) {
+void NinjaTrap::meleeAttack( std::string & target ) {
 	if (this->_hitPoints == 0) {
 		std::cout << "NINJ4-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;

@@ -1,10 +1,11 @@
 #ifndef SORCERER_H
 # define SORCERER_H
 
+# include "Victim.hpp"
+
 # include <string>
 # include <iostream>
 
-# include "Victim.hpp"
 
 class Sorcerer {
 

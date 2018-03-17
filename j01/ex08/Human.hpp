@@ -1,6 +1,7 @@
 #ifndef HUMAN_H
 # define HUMAN_H
-#include <string>
+
+# include <string>
 
 class Human {
 	private:

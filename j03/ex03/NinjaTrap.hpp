@@ -16,8 +16,8 @@ class NinjaTrap : public ClapTrap {
 
 		NinjaTrap &    operator=( NinjaTrap const & rhs );
 
-		virtual void rangedAttack(std::string & target);
-		virtual void meleeAttack(std::string & target);
+		virtual void rangedAttack( std::string & target );
+		virtual void meleeAttack( std::string & target );
 		void ninjaShoebox( FragTrap & fragTrap );
 		void ninjaShoebox( ClapTrap & clapTrap );
 		void ninjaShoebox( NinjaTrap & ninjaTrap );

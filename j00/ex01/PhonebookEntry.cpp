@@ -1,6 +1,7 @@
+#include "PhonebookEntry.hpp"
+
 #include <string>
 #include <iostream>
-#include "PhonebookEntry.hpp"
 
 std::string truncateString( std::string str );
 

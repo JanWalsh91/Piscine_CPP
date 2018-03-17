@@ -1,4 +1,5 @@
 #include "FragTrap.hpp"
+
 #include <iostream>
 #include <string>
 
@@ -40,7 +41,7 @@ FragTrap &    FragTrap::operator=( FragTrap const & rhs ) {
 	return (*this);
 };
 
-void FragTrap::rangedAttack(std::string & target) {
+void FragTrap::rangedAttack( std::string & target ) {
 	if (this->_hitPoints == 0) {
 		std::cout << "FR4G-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;
@@ -48,7 +49,7 @@ void FragTrap::rangedAttack(std::string & target) {
 	std::cout << "FR4G-TP " << this->_name << " attacks " << target << " at range, causing " << this->_rangedDmg << " points of damage !" << std::endl;
 };
 
-void FragTrap::meleeAttack(std::string & target) {
+void FragTrap::meleeAttack( std::string & target ) {
 	if (this->_hitPoints == 0) {
 		std::cout << "FR4G-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;
@@ -56,7 +57,7 @@ void FragTrap::meleeAttack(std::string & target) {
 	std::cout << "FR4G-TP " << this->_name << " melee attacks " << target << ", causing " << this->_meleeDmg << " points of damage !" << std::endl;
 };
 
-void FragTrap::takeDamage(unsigned int dmg) {
+void FragTrap::takeDamage( unsigned int dmg ) {
 	if (this->_hitPoints == 0) {
 		std::cout << "FR4G-TP " << this->_name << " is being pummeled to death ! " << std::endl;
 		return ;
@@ -74,7 +75,7 @@ void FragTrap::takeDamage(unsigned int dmg) {
 	}
 };
 
-void FragTrap::beRepaired(unsigned int hitPoints) {
+void FragTrap::beRepaired( unsigned int hitPoints ) {
 	std::cout << "FR4G-TP " << this->_name << " is repaired for " << hitPoints << " points !" << std::endl;
 	if (this->_hitPoints == 0) {
 		std::cout << "FR4G-TP " << this->_name << " is back up !" << std::endl;
@@ -85,7 +86,7 @@ void FragTrap::beRepaired(unsigned int hitPoints) {
 	}
 };
 
-void FragTrap::vaulthunter_dot_exe(std::string const & target) {
+void FragTrap::vaulthunter_dot_exe( std::string const & target ) {
 	if (this->_hitPoints == 0) {
 		std::cout << "FR4G-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;

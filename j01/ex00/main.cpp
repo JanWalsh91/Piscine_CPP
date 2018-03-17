@@ -1,4 +1,5 @@
 #include "Pony.hpp"
+
 #include <iostream>
 
 void ponyOnTheHeap( void );

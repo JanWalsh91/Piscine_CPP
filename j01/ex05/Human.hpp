@@ -2,6 +2,7 @@
 # define HUMAN_H
 
 #include "Brain.hpp"
+
 #include <string>
 
 class Human {

@@ -31,7 +31,7 @@ FragTrap &    FragTrap::operator=( FragTrap const & rhs ) {
 	return (*this);
 };
 
-void FragTrap::vaulthunter_dot_exe(std::string const & target) {
+void FragTrap::vaulthunter_dot_exe( std::string const & target ) {
 	if (this->_hitPoints == 0) {
 		std::cout << "FR4G-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;
@@ -47,7 +47,7 @@ void FragTrap::vaulthunter_dot_exe(std::string const & target) {
 	std::cout << "FR4G-TP " << this->_name << " is out of energy! :(" << std::endl;
 };
 
-void FragTrap::rangedAttack(std::string & target) {
+void FragTrap::rangedAttack( std::string & target ) {
 	if (this->_hitPoints == 0) {
 		std::cout << "FR4G-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;
@@ -55,7 +55,7 @@ void FragTrap::rangedAttack(std::string & target) {
 	std::cout << "FR4G-TP " << this->_name << " attacks " << target << " at range, causing " << this->_rangedDmg << " points of damage !" << std::endl;
 };
 
-void FragTrap::meleeAttack(std::string & target) {
+void FragTrap::meleeAttack( std::string & target ) {
 	if (this->_hitPoints == 0) {
 		std::cout << "FR4G-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;

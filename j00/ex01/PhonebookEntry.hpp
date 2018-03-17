@@ -1,5 +1,5 @@
-#ifndef PHONEBOOK_ENTRY_U
-# define PHONEBOOK_ENTRY_U
+#ifndef PHONEBOOK_ENTRY_H
+# define PHONEBOOK_ENTRY_H
 
 #include <string>
 

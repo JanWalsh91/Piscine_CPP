@@ -25,10 +25,10 @@ class ClapTrap {
 		ClapTrap( ClapTrap const & ClapTrap );
 		virtual ~ClapTrap( void );
 		
-		virtual void rangedAttack(std::string & target);
-		virtual void meleeAttack(std::string & target);
-		void takeDamage(unsigned int dmg);
-		void beRepaired(unsigned int hitPoints);
+		virtual void rangedAttack( std::string & target );
+		virtual void meleeAttack( std::string & target );
+		void takeDamage( unsigned int dmg );
+		void beRepaired( unsigned int hitPoints );
 
 		ClapTrap &    operator=( ClapTrap const & rhs );
 };
