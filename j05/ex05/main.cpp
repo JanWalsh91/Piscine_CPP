@@ -7,7 +7,7 @@
 #include <string>
 
 int    main ( void ) {
-	
+	// test a lot , may segfault....
 	CentralBureaucracy central;
 
 
