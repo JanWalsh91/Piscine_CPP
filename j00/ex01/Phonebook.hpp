@@ -11,14 +11,14 @@ class Phonebook {
 		Phonebook( void );
 		~Phonebook( void );
 
-		void executeCommand( std::string command );
+		void			executeCommand( std::string command );
 
 	private:
-		PhonebookEntry entries[8];
-		void add( void );
-		void search( void ) const;
+		PhonebookEntry	_entries[8];
+		void			_add( void );
+		void			_search( void ) const;
 
-		int getIndexOfNextEmptyEntry( void );
+		int				_getIndexOfNextEmptyEntry( void );
 };
 
 #endif

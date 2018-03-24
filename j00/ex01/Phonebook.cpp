@@ -9,65 +9,80 @@ Phonebook::~Phonebook( void ) {}
 
 void Phonebook::executeCommand( std::string command ) {
 	if (command.compare("ADD") == 0) {
-		this->add();
+		this->_add();
 	}
 	else if (command.compare("SEARCH") == 0) {
-		this->search();
+		this->_search();
 	}
 	else {
 		std::cout << "Invalid command: " << command << std::endl;
 	}
 }
 
-void Phonebook::add( void ) {
+void Phonebook::_add( void ) {
 	std::cout << "Please enter the following information: " << std::endl;
 
-	int index = this->getIndexOfNextEmptyEntry();
-	this->entries[index].index = index;
+	int index = this->_getIndexOfNextEmptyEntry();
+	this->_entries[index].setIndex( index );
 	
 	if (index == 8) {
 		std::cout << "Your phonebook is full!" << std::endl;
 		return ;
 	}
 
+
+	std::string str = "";
+
 	std::cout << "first name: ";
-	getline(std::cin, this->entries[index].firstName);
+	getline(std::cin, str);
+	this->_entries[index].setFirstName( str );
 
 	std::cout << "last name: ";
-	getline(std::cin, this->entries[index].lastName);
-
+	getline(std::cin, str);
+	this->_entries[index].setLastName( str );
+	
 	std::cout << "nickanme: ";
-	getline(std::cin, this->entries[index].nickname);
-
+	getline(std::cin, str);
+	this->_entries[index].setNickname( str );
+	
 	std::cout << "login: ";
-	getline(std::cin, this->entries[index].login);
+	getline(std::cin, str);
+	this->_entries[index].setLogin( str );
 
 	std::cout << "postal address: ";
-	getline(std::cin, this->entries[index].postalAddress);
+	getline(std::cin, str);
+	this->_entries[index].setPostalAddress( str );
 
 	std::cout << "email address: ";
-	getline(std::cin, this->entries[index].emailAddress);
+	getline(std::cin, str);
+	this->_entries[index].setEmailAddress( str );
 
 	std::cout << "phone number: ";
-	getline(std::cin, this->entries[index].phoneNumber);
+	getline(std::cin, str);
+	this->_entries[index].setPhoneNumber( str );
 
 	std::cout << "birthday date: ";
-	getline(std::cin, this->entries[index].birthdayDate);
-	
+	getline(std::cin, str);
+	this->_entries[index].setBirthdayDate( str );
+
 	std::cout << "favorite meal: ";
-	getline(std::cin, this->entries[index].favoriteMeal);
-	
+	getline(std::cin, str);
+	this->_entries[index].setFavoriteMeal( str );
+
 	std::cout << "underwear color: ";
-	getline(std::cin, this->entries[index].underwearColor);
-	
+	getline(std::cin, str);
+	this->_entries[index].setUnderwearColor( str );
+
 	std::cout << "darkest secret: ";
-	getline(std::cin, this->entries[index].darkestSecret);
-	this->entries[index].isInit = 1;
+	getline(std::cin, str);
+	this->_entries[index].setDarkestSecret( str );
+
+	this->_entries[index].setIsInit();
 }
 
-void Phonebook::search( void ) const {
+void Phonebook::_search( void ) const {
 	int index = 0;
-	if (!this->entries[index].isInit) {
+	if ( !this->_entries[index].isInit() ) {
 		std::cout << "Your phonebook is empty" << std::endl;
 		return ;
 	}
@@ -78,13 +93,14 @@ void Phonebook::search( void ) const {
 		<< "nickname  "
 		<< std::endl;
 
-	while (this->entries[index].isInit) {
-		this->entries[index].returnEntry();
+	while ( this->_entries[index].isInit() ) {
+		this->_entries[index].displayEntry();
 		++index;
 	}
 	while (1) {
 		std::cout << "Enter index of desired entry: ";
-		std::string entryIndex;
+		std::string	entryIndex;
+
 		getline(std::cin, entryIndex);
 		if (!std::cin) {
 			break ;
@@ -94,8 +110,8 @@ void Phonebook::search( void ) const {
 			continue ;
 		}
 		index = entryIndex[0] - '0';
-		if (index >= 0 && index < 8 && this->entries[index].isInit) {
-			this->entries[index].returnEntryFull();
+		if (index >= 0 && index < 8 && this->_entries[index].isInit() ) {
+			this->_entries[index].displayEntryFull();
 			break ;
 		}
 		else {
@@ -105,11 +121,11 @@ void Phonebook::search( void ) const {
 	}
 }
 
-int Phonebook::getIndexOfNextEmptyEntry( void ) {
+int Phonebook::_getIndexOfNextEmptyEntry( void ) {
 	int index = 0;
 
 	while (index < 8) {
-		if (!this->entries[index].isInit) {
+		if ( !this->_entries[index].isInit() ) {
 			return index;
 		}
 		++index;
