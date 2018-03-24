@@ -1,19 +1,13 @@
 #include "Phonebook.hpp"
 #include "PhonebookEntry.hpp"
 
-#include <string>
 #include <iostream>
 
-Phonebook::Phonebook( void ) {
-	return ;
-}
+Phonebook::Phonebook( void ) {}
 
-Phonebook::~Phonebook( void ) {
-	return ;
-}
+Phonebook::~Phonebook( void ) {}
 
 void Phonebook::executeCommand( std::string command ) {
-	std::cout << "executing command" << std::endl;
 	if (command.compare("ADD") == 0) {
 		this->add();
 	}
@@ -23,7 +17,7 @@ void Phonebook::executeCommand( std::string command ) {
 	else {
 		std::cout << "Invalid command: " << command << std::endl;
 	}
-};
+}
 
 void Phonebook::add( void ) {
 	std::cout << "Please enter the following information: " << std::endl;
@@ -92,7 +86,9 @@ void Phonebook::search( void ) const {
 		std::cout << "Enter index of desired entry: ";
 		std::string entryIndex;
 		getline(std::cin, entryIndex);
-
+		if (!std::cin) {
+			break ;
+		}
 		if (entryIndex.length() != 1 || isdigit(!entryIndex[0])) {
 			std::cout << "Invalid index!" << std::endl;
 			continue ;

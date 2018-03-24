@@ -4,6 +4,8 @@
 #include <string>
 
 class PhonebookEntry {
+	private:
+	
 	public:
 		int index;
 		int isInit;
@@ -20,6 +22,7 @@ class PhonebookEntry {
 		std::string darkestSecret;
 		void returnEntry( void ) const;
 		void returnEntryFull( void ) const;
+		
 		PhonebookEntry( void ); 
 		~PhonebookEntry( void ); 
 };

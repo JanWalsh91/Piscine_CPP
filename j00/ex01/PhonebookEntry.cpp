@@ -1,18 +1,12 @@
 #include "PhonebookEntry.hpp"
 
-#include <string>
 #include <iostream>
 
 std::string truncateString( std::string str );
 
-PhonebookEntry::PhonebookEntry( void ) {
-	this->isInit = 0;
-	return ;
-};
+PhonebookEntry::PhonebookEntry( void ) : isInit(0) {}
 
-PhonebookEntry::~PhonebookEntry( void ) {
-	return ;
-};
+PhonebookEntry::~PhonebookEntry( void ) {}
 
 void PhonebookEntry::returnEntry( void ) const {
 	std::cout

@@ -1,32 +1,22 @@
 #include "Phonebook.hpp"
 
-#include <string>
 #include <iostream>
-
-using namespace std;
 
 int	main() {
 
-	cout << "Welcome to Phonebook!" << endl;
+	std::cout << "Welcome to Phonebook!" << std::endl;
 	Phonebook phonebook;
-	while (cin) {
-		cout << "Looping" << endl;
-		string command;
-		cout << "Command: ";
+	while (std::cin) {
+		std::string command;
+		std::cout << "Pleaase enter a command: <ADD, SEARCH, EXIT>" << std::endl;
 		
-		if (!cin) {
-			break ;
-		}
-		getline(cin, command);
-		if (!cin) {
+		getline(std::cin, command);
+		if (!std::cin) {
 			break ;
 		}
 		if (command.compare("EXIT") == 0) {
-			cout << "Goodbye!" << endl;
+			std::cout << "Goodbye!" << std::endl;
 			exit(0);
-		}
-		if (!cin) {
-			break ;
 		}
 		phonebook.executeCommand(command);
 	}

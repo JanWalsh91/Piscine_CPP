@@ -10,6 +10,7 @@
 class Sorcerer {
 
 	private:
+		Sorcerer( void );
 		std::string _name;
 		std::string _title;
 
