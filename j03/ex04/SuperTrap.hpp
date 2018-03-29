@@ -8,6 +8,9 @@
 
 class SuperTrap : public FragTrap, public NinjaTrap {
 
+	private:
+		SuperTrap( void );
+
 	public:
 		SuperTrap( std::string name );
 		SuperTrap( SuperTrap const & superTrap );

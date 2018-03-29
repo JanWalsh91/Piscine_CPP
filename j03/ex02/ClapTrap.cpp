@@ -2,23 +2,22 @@
 
 #include <iostream>
 
+ClapTrap::ClapTrap( void ) {};
+
 ClapTrap::ClapTrap( std::string name ) : _name(name) {
 	this->_initRand();
 	std::cout << "ClapTrap under construction !" << std::endl;
-	return ;
-};
+}
 
 ClapTrap::ClapTrap( ClapTrap const & ClapTrap ) {
 	this->_initRand();
 	*this = ClapTrap;
 	std::cout << "ClapTrap " << this->_name << "copied !" << std::endl;
-	return ;
-};
+}
 
 ClapTrap::~ClapTrap( void ) {
 	std::cout << "ClapTrap destroyed !" << std::endl;
-	return ;
-};
+}
 
 ClapTrap &    ClapTrap::operator=( ClapTrap const & rhs ) {
 	this->_maxHitPoints = rhs._maxHitPoints;
@@ -31,7 +30,7 @@ ClapTrap &    ClapTrap::operator=( ClapTrap const & rhs ) {
 	this->_rangedDmg = rhs._rangedDmg;
 	this->_armor = rhs._armor;
 	return (*this);
-};
+}
 
 int ClapTrap::_randInit = 0;
 
@@ -40,7 +39,7 @@ void	ClapTrap::_initRand( void ) {
 		std::srand(std::time(nullptr));
 		ClapTrap::_randInit = 1;
 	}
-};
+}
 
 void ClapTrap::rangedAttack( std::string & target ) {
 	if (this->_hitPoints == 0) {
@@ -48,7 +47,7 @@ void ClapTrap::rangedAttack( std::string & target ) {
 		return ;
 	}
 	std::cout << "CL4P-TP " << this->_name << " attacks " << target << " at range with its unicorn gun blaster, causing " << this->_rangedDmg << " points of damage !" << std::endl;
-};
+}
 
 void ClapTrap::meleeAttack( std::string & target ) {
 	if (this->_hitPoints == 0) {
@@ -56,7 +55,7 @@ void ClapTrap::meleeAttack( std::string & target ) {
 		return ;
 	}
 	std::cout << "CL4P-TP " << this->_name << " melee attacks " << target << " with its rainbow dagger, causing " << this->_meleeDmg << " points of damage !" << std::endl;
-};
+}
 
 void ClapTrap::takeDamage( unsigned int dmg ) {
 	if (this->_hitPoints == 0) {
@@ -74,7 +73,7 @@ void ClapTrap::takeDamage( unsigned int dmg ) {
 		std::cout << "CL4P-TP " << this->_name << " is KO'ed ! " << std::endl;
 		this->_hitPoints = 0;
 	}
-};
+}
 
 void ClapTrap::beRepaired( unsigned int hitPoints ) {
 	std::cout << "CL4P-TP " << this->_name << " is repaired for " << hitPoints << " points !" << std::endl;
@@ -85,4 +84,4 @@ void ClapTrap::beRepaired( unsigned int hitPoints ) {
 	if ( this->_hitPoints > this->_maxHitPoints ) {
 		this->_hitPoints = this->_maxHitPoints;
 	}
-};
+}

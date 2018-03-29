@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 
+FragTrap::FragTrap( void ) {};
+
 FragTrap::FragTrap( std::string name ) : ClapTrap( name ) {
 	this->_maxHitPoints = this->_hitPoints = 100;
 	this->_maxEnergyPoints = this->_energyPoints = 100;

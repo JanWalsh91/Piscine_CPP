@@ -1,6 +1,9 @@
 #include "ScavTrap.hpp"
+
 #include <iostream>
 #include <string>
+
+ScavTrap::ScavTrap( void ) {} ;
 
 ScavTrap::ScavTrap( std::string name ) : ClapTrap(name) {
 	this->_name = name;
@@ -11,13 +14,11 @@ ScavTrap::ScavTrap( std::string name ) : ClapTrap(name) {
 	this->_rangedDmg = 15;
 	this->_armor = 3;
 	std::cout << "SC4V-TP " << this->_name << " created ! Poof !" << std::endl;
-	return ;
-};
+}
 
 ScavTrap::~ScavTrap( void ) {
 	std::cout << "SC4V-TP " << this->_name << " destroyed ! Poof ! " << std::endl;
-	return ;
-};
+}
 
 void ScavTrap::challengeNewcomer( std::string const & target ) {
 	if (this->_hitPoints == 0) {
@@ -34,8 +35,7 @@ void ScavTrap::challengeNewcomer( std::string const & target ) {
 
 	int i = std::rand() % 5;
 	std::cout << "SC4V-TP " << this->_name << " challenges " << target << " " << challenge[i] << std::endl;
-
-};
+}
 
 void ScavTrap::rangedAttack( std::string & target ) {
 	if (this->_hitPoints == 0) {
@@ -43,7 +43,7 @@ void ScavTrap::rangedAttack( std::string & target ) {
 		return ;
 	}
 	std::cout << "SC4V-TP " << this->_name << " attacks " << target << " at range with its unicorn gun blaster, causing " << this->_rangedDmg << " points of damage !" << std::endl;
-};
+}
 
 void ScavTrap::meleeAttack( std::string & target ) {
 	if (this->_hitPoints == 0) {
@@ -51,4 +51,4 @@ void ScavTrap::meleeAttack( std::string & target ) {
 		return ;
 	}
 	std::cout << "SC4V-TP " << this->_name << " melee attacks " << target << " with its rainbow dagger, causing " << this->_meleeDmg << " points of damage !" << std::endl;
-};
+}

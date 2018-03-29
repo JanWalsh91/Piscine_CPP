@@ -9,7 +9,7 @@ int    main ( void ) {
 
 	kreig.rangedAttack(targets[std::rand() % 5]);
 	kreig.meleeAttack(targets[std::rand() % 5]);
-	std::cout << kreig._hitPoints << std::endl;
+	
 	kreig.takeDamage(20);
 	kreig.vaulthunter_dot_exe(targets[std::rand() % 5]);
 	kreig.takeDamage(30);

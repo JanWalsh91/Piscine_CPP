@@ -9,6 +9,9 @@
 
 class NinjaTrap : public ClapTrap {
 
+	private:
+		NinjaTrap( void );
+
 	public:
 		NinjaTrap( std::string name );
 		NinjaTrap( NinjaTrap const & ninjaTrap );
@@ -21,6 +24,7 @@ class NinjaTrap : public ClapTrap {
 		void ninjaShoebox( FragTrap & fragTrap );
 		void ninjaShoebox( ClapTrap & clapTrap );
 		void ninjaShoebox( NinjaTrap & ninjaTrap );
+		void ninjaShoebox( ScavTrap & scavTrap );
 };
 
 #endif

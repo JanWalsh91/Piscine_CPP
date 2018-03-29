@@ -15,6 +15,7 @@ class ScavTrap {
 		int _meleeDmg;
 		int _rangedDmg;
 		int _armor;
+		ScavTrap( void );
 	
 	public:
 		ScavTrap( std::string name );

@@ -15,6 +15,7 @@ class FragTrap {
 		int _meleeDmg;
 		int _rangedDmg;
 		int _armor;
+		FragTrap( void );
 	
 	public:
 		FragTrap( std::string name );

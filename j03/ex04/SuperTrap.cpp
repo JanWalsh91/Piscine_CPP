@@ -1,6 +1,9 @@
 #include "SuperTrap.hpp"
+
 #include <iostream>
 #include <string>
+
+SuperTrap::SuperTrap( void ) {} ;
 
 SuperTrap::SuperTrap( std::string name ) : ClapTrap ( name ), FragTrap( name ), NinjaTrap( name ) {
 	this->_maxHitPoints = this->_hitPoints = 100;
@@ -10,13 +13,11 @@ SuperTrap::SuperTrap( std::string name ) : ClapTrap ( name ), FragTrap( name ), 
 	this->_rangedDmg = 20;
 	this->_armor = 5;
 	std::cout << "SUP3R-TP " << this->_name << " created ! " << std::endl;
-	return ;
-};
+}
 
 SuperTrap::~SuperTrap( void ) {
 	std::cout << "SUP3R-TP " << this->_name << " destroyed ! " << std::endl;
-	return ;
-};
+}
 
 SuperTrap &    SuperTrap::operator=( SuperTrap const & rhs ) {
 	this->_maxHitPoints = rhs._maxHitPoints;
@@ -29,12 +30,12 @@ SuperTrap &    SuperTrap::operator=( SuperTrap const & rhs ) {
 	this->_rangedDmg = rhs._rangedDmg;
 	this->_armor = rhs._armor;
 	return (*this);
-};
+}
 
 void SuperTrap::rangedAttack( std::string & target ) {
-	return (FragTrap::rangedAttack(target));
-};
+	FragTrap::rangedAttack(target);
+}
 
 void SuperTrap::meleeAttack( std::string & target ) {
-	return (NinjaTrap::rangedAttack(target));
-};
+	NinjaTrap::rangedAttack(target);
+}

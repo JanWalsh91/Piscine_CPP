@@ -6,7 +6,10 @@
 #include <string>
 
 class FragTrap : public virtual ClapTrap {
-
+	
+	protected:
+		FragTrap( void );
+		
 	public:
 		FragTrap( std::string name );
 		FragTrap( FragTrap const & fragTrap );

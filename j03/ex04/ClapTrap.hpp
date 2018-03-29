@@ -19,6 +19,7 @@ class ClapTrap {
 		int _meleeDmg;
 		int _rangedDmg;
 		int _armor;
+		ClapTrap( void );
 
 	public:
 		ClapTrap( std::string name );

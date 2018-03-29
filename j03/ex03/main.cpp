@@ -35,5 +35,9 @@ int    main ( void ) {
 	nino.ninjaShoebox(kreig);
 	nino.ninjaShoebox(nino);
 	nino.takeDamage(20);
+
+	ClapTrap clapper("Clapper");
+	nino.ninjaShoebox(clapper);
+	
 	return (0);
 }

@@ -2,10 +2,14 @@
 # define SCAVTRAP_H
 
 #include "ClapTrap.hpp"
+
 #include <string>
 
 class ScavTrap : public virtual ClapTrap {
-
+	
+	private:
+		ScavTrap( void );
+		
 	public:
 		ScavTrap( std::string name );
 		ScavTrap( ScavTrap const & scavTrap );

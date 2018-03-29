@@ -8,6 +8,9 @@
 #include <string>
 
 class NinjaTrap : public virtual ClapTrap {
+	
+	protected:
+		NinjaTrap( void );
 
 	public:
 		NinjaTrap( std::string name );
@@ -21,6 +24,7 @@ class NinjaTrap : public virtual ClapTrap {
 		void ninjaShoebox( FragTrap & fragTrap );
 		void ninjaShoebox( ClapTrap & clapTrap );
 		void ninjaShoebox( NinjaTrap & ninjaTrap );
+		void ninjaShoebox( ScavTrap & scavTrap );
 };
 
 #endif
