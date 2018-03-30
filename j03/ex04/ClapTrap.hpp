@@ -22,17 +22,17 @@ class ClapTrap {
 		ClapTrap( void );
 
 	public:
-		ClapTrap( std::string name );
-		ClapTrap( ClapTrap const & ClapTrap );
+		ClapTrap( std::string name, int hitPoints, int energyPoints, int level, int meleeDmg, int rangedDmg, int armor );
+		ClapTrap( ClapTrap const & clapTrap );
 		~ClapTrap( void );
 		
-		std::string getName( void );
-		virtual void rangedAttack( std::string const & target );
-		virtual void meleeAttack( std::string const & target );
+		const std::string getName( void ) const;
+		virtual void rangedAttack( std::string const & target ) const;
+		virtual void meleeAttack( std::string const & target ) const;
 		void takeDamage( unsigned int amount );
 		void beRepaired( unsigned int amount );
 
-		ClapTrap &    operator=( ClapTrap const & rhs );
+		virtual ClapTrap &    operator=( ClapTrap const & rhs );
 };
 
 #endif

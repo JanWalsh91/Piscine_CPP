@@ -2,13 +2,15 @@
 # define SQUAD_H
 
 # include "ISquad.hpp"
-# include "SpaceMarines.hpp"
+# include "ISpaceMarine.hpp"
+
+class SpaceMarineNode;
 
 class Squad : public ISquad {
-
+	
 	private:
 		int					_unitCount;
-		SpaceMarines* 		_marines;
+		SpaceMarineNode*	_marines;
 
 	public:
 		Squad( void );
@@ -20,6 +22,20 @@ class Squad : public ISquad {
 		int getCount( void ) const;
 		ISpaceMarine* getUnit( int i ) const;
 		int push( ISpaceMarine* marine );
+};
+
+class SpaceMarineNode {
+	
+	public:
+		ISpaceMarine*		marine;
+		SpaceMarineNode*	next;
+
+		SpaceMarineNode( void );
+		SpaceMarineNode( ISpaceMarine* marine );
+		SpaceMarineNode( SpaceMarineNode const & spaceMarineNode );
+		~SpaceMarineNode( void );
+
+		SpaceMarineNode &    operator=( SpaceMarineNode const & rhs );
 };
 
 #endif

@@ -15,16 +15,16 @@ class NinjaTrap : public ClapTrap {
 	public:
 		NinjaTrap( std::string name );
 		NinjaTrap( NinjaTrap const & ninjaTrap );
-		virtual ~NinjaTrap( void );
+		~NinjaTrap( void );
 
 		NinjaTrap &    operator=( NinjaTrap const & rhs );
 
-		virtual void rangedAttack( std::string const & target );
-		virtual void meleeAttack( std::string const & target );
-		void ninjaShoebox( FragTrap & fragTrap );
-		void ninjaShoebox( ClapTrap & clapTrap );
-		void ninjaShoebox( NinjaTrap & ninjaTrap );
-		void ninjaShoebox( ScavTrap & scavTrap );
+		void rangedAttack( std::string const & target ) const;
+		void meleeAttack( std::string const & target ) const;
+		void ninjaShoebox( FragTrap & fragTrap ) const;
+		void ninjaShoebox( ClapTrap & clapTrap ) const;
+		void ninjaShoebox( NinjaTrap & ninjaTrap ) const;
+		void ninjaShoebox( ScavTrap & scavTrap ) const;
 };
 
 #endif

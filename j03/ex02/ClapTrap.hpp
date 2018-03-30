@@ -22,14 +22,14 @@ class ClapTrap {
 		ClapTrap( void );
 
 	public:
-		ClapTrap( std::string name );
+		ClapTrap( std::string name, int hitPoints, int energyPoints, int level, int meleeDmg, int rangedDmg, int armor );
 		ClapTrap( ClapTrap const & ClapTrap );
 		~ClapTrap( void );
 		
 		ClapTrap &    operator=( ClapTrap const & rhs );
 
-		virtual void rangedAttack( std::string const & target );
-		virtual void meleeAttack( std::string const & target );
+		virtual void rangedAttack( std::string const & target ) const;
+		virtual void meleeAttack( std::string const & target ) const;
 		void takeDamage( unsigned int amount );
 		void beRepaired( unsigned int amount );
 };

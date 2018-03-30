@@ -13,9 +13,9 @@ class Character {
 		std::string _name;
 		int			_ap;
 		AWeapon *	_weapon;
+		Character( void );
 
 	public:
-		Character( void );
 		Character( std::string const & name );
 		Character( Character const & character );
 		virtual ~Character( void );
@@ -23,7 +23,7 @@ class Character {
 		void recoverAP( void );
 		void equip( AWeapon* weapon );
 		void attack( Enemy* enemy );
-		std::string virtual getName( void ) const;
+		std::string const getName( void ) const;
 		int virtual getAP( void ) const;
 		AWeapon* getWeapon( void ) const;
 

@@ -1,16 +1,11 @@
 #include "FragTrap.hpp"
+
 #include <iostream>
 #include <string>
 
 FragTrap::FragTrap( void ) {};
 
-FragTrap::FragTrap( std::string name ) : ClapTrap( name ) {
-	this->_maxHitPoints = this->_hitPoints = 100;
-	this->_maxEnergyPoints = this->_energyPoints = 100;
-	this->_level = 1;
-	this->_meleeDmg = 30;
-	this->_rangedDmg = 20;
-	this->_armor = 5;
+FragTrap::FragTrap( std::string name ) : ClapTrap( name, 100, 100, 1, 30, 20, 5 ) {
 	std::cout << "FR4G-TP " << this->_name << " created ! " << std::endl;
 	return ;
 };
@@ -27,17 +22,9 @@ FragTrap::FragTrap( FragTrap const & FragTrap ) {
 }
 
 FragTrap &    FragTrap::operator=( FragTrap const & rhs ) {
-	this->_maxHitPoints = rhs._maxHitPoints;
-	this->_hitPoints = rhs._hitPoints;
-	this->_maxEnergyPoints = rhs._maxEnergyPoints;
-	this->_energyPoints = rhs._energyPoints;
-	this->_level = rhs._level;
-	this->_name = rhs._name;
-	this->_meleeDmg = rhs._meleeDmg;
-	this->_rangedDmg = rhs._rangedDmg;
-	this->_armor = rhs._armor;
+	ClapTrap::operator=( rhs );
 	return (*this);
-};
+}
 
 void FragTrap::vaulthunter_dot_exe( std::string const & target ) {
 	if (this->_hitPoints == 0) {
@@ -61,7 +48,7 @@ void FragTrap::vaulthunter_dot_exe( std::string const & target ) {
 	std::cout << "FR4G-TP " << this->_name << " is out of energy! :(" << std::endl;
 };
 
-void FragTrap::rangedAttack( std::string const & target ) {
+void FragTrap::rangedAttack( std::string const & target ) const {
 	if (this->_hitPoints == 0) {
 		std::cout << "FR4G-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;
@@ -69,7 +56,7 @@ void FragTrap::rangedAttack( std::string const & target ) {
 	std::cout << "FR4G-TP " << this->_name << " attacks " << target << " at range, causing " << this->_rangedDmg << " points of damage !" << std::endl;
 };
 
-void FragTrap::meleeAttack( std::string const & target ) {
+void FragTrap::meleeAttack( std::string const & target ) const {
 	if (this->_hitPoints == 0) {
 		std::cout << "FR4G-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;

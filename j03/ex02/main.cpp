@@ -32,5 +32,9 @@ int    main ( void ) {
 
 	ScavTrap a1 = sally;
 	ScavTrap c1 = ScavTrap(sally);
+
+	ClapTrap ct = ClapTrap("test", 20, 20, 20, 20, 20, 0);
+	ct.takeDamage(10);
+	ct.takeDamage(10);
 	return (0);
 }

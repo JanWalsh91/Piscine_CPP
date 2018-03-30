@@ -44,7 +44,7 @@ ScavTrap &    ScavTrap::operator=( ScavTrap const & rhs ) {
 	return (*this);
 }
 
-void ScavTrap::rangedAttack( std::string const & target ) {
+void ScavTrap::rangedAttack( std::string const & target ) const {
 	if (this->_hitPoints == 0) {
 		std::cout << "SC4V-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;
@@ -52,7 +52,7 @@ void ScavTrap::rangedAttack( std::string const & target ) {
 	std::cout << "SC4V-TP " << this->_name << " attacks " << target << " at range with its unicorn gun blaster, causing " << this->_rangedDmg << " points of damage !" << std::endl;
 }
 
-void ScavTrap::meleeAttack( std::string const & target ) {
+void ScavTrap::meleeAttack( std::string const & target ) const {
 	if (this->_hitPoints == 0) {
 		std::cout << "SC4V-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;
@@ -89,7 +89,7 @@ void ScavTrap::beRepaired( unsigned int amount ) {
 	}
 }
 
-void ScavTrap::challengeNewcomer( std::string const & target ) {
+void ScavTrap::challengeNewcomer( std::string const & target ) const {
 	if (this->_hitPoints == 0) {
 		std::cout << "SC4V-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;

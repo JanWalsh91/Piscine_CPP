@@ -13,12 +13,12 @@ class FragTrap : public ClapTrap {
 	public:
 		FragTrap( std::string name );
 		FragTrap( FragTrap const & fragTrap );
-		virtual ~FragTrap( void );
+		~FragTrap( void );
 
 		FragTrap &    operator=( FragTrap const & rhs );
 
-		virtual void rangedAttack( std::string const & target );
-		virtual void meleeAttack( std::string const & target );
+		void rangedAttack( std::string const & target ) const;
+		void meleeAttack( std::string const & target ) const;
 		void vaulthunter_dot_exe( std::string const & target );
 };
 

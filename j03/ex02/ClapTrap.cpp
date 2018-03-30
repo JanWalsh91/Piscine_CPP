@@ -4,7 +4,23 @@
 
 ClapTrap::ClapTrap( void ) {};
 
-ClapTrap::ClapTrap( std::string name ) : _name(name) {
+ClapTrap::ClapTrap( std::string name,
+	int hitPoints,
+	int energyPoints,
+	int level,
+	int meleeDmg,
+	int rangedDmg,
+	int armor ) :
+	_name(name),
+	_maxHitPoints(hitPoints),
+	_maxEnergyPoints(energyPoints),
+	_hitPoints(hitPoints),
+	_energyPoints(energyPoints),
+	_level(level),
+	_meleeDmg(meleeDmg),
+	_rangedDmg(rangedDmg),
+	_armor(armor) {
+	
 	this->_initRand();
 	std::cout << "ClapTrap under construction !" << std::endl;
 }
@@ -41,7 +57,7 @@ void	ClapTrap::_initRand( void ) {
 	}
 }
 
-void ClapTrap::rangedAttack( std::string const & target ) {
+void ClapTrap::rangedAttack( std::string const & target ) const {
 	if (this->_hitPoints == 0) {
 		std::cout << "CL4P-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;
@@ -49,7 +65,7 @@ void ClapTrap::rangedAttack( std::string const & target ) {
 	std::cout << "CL4P-TP " << this->_name << " attacks " << target << " at range with its unicorn gun blaster, causing " << this->_rangedDmg << " points of damage !" << std::endl;
 }
 
-void ClapTrap::meleeAttack( std::string const & target ) {
+void ClapTrap::meleeAttack( std::string const & target ) const {
 	if (this->_hitPoints == 0) {
 		std::cout << "CL4P-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;

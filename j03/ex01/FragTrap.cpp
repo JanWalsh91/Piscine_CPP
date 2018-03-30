@@ -43,7 +43,7 @@ FragTrap &    FragTrap::operator=( FragTrap const & rhs ) {
 	return (*this);
 }
 
-void FragTrap::rangedAttack( std::string const & target ) {
+void FragTrap::rangedAttack( std::string const & target ) const {
 	if (this->_hitPoints == 0) {
 		std::cout << "FR4G-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;
@@ -51,7 +51,7 @@ void FragTrap::rangedAttack( std::string const & target ) {
 	std::cout << "FR4G-TP " << this->_name << " attacks " << target << " at range, causing " << this->_rangedDmg << " points of damage !" << std::endl;
 }
 
-void FragTrap::meleeAttack( std::string const & target ) {
+void FragTrap::meleeAttack( std::string const & target ) const {
 	if (this->_hitPoints == 0) {
 		std::cout << "FR4G-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;

@@ -6,7 +6,6 @@
 # include <string>
 # include <iostream>
 
-
 class Sorcerer {
 
 	private:
@@ -17,12 +16,12 @@ class Sorcerer {
 	public:
 		Sorcerer( std::string name, std::string title );
 		Sorcerer( Sorcerer const & sorcerer );
-		~Sorcerer( void );
+		virtual ~Sorcerer( void );
 
 		Sorcerer &    operator=( Sorcerer const & rhs );
 
-		std::string getName( void ) const;
-		std::string getTitle( void ) const;
+		const std::string getName( void ) const;
+		const std::string getTitle( void ) const;
 		void polymorph( Victim const & victim ) const;
 };
 

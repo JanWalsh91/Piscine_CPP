@@ -9,14 +9,14 @@ class Enemy {
 	protected:
 		int			_hp;
 		std::string _type;
+		Enemy( void );
 
 	public:
-		Enemy( void );
 		Enemy( int hp, std::string const & type );
 		Enemy( Enemy const & enemy );
 		virtual ~Enemy( void );
 
-		std::string virtual getType( void ) const;
+		std::string const getType( void ) const;
 		int getHP( void ) const;
 
 		virtual void takeDamage( int damage );

@@ -25,6 +25,7 @@ TacticalMarine &    TacticalMarine::operator=( TacticalMarine const & rhs ) {
 };
 
 TacticalMarine*	TacticalMarine::clone( void ) const {
+	std::cout << "Clone Tactical Marine" << std::endl;
 	return ( new TacticalMarine(*this) );
 };
 

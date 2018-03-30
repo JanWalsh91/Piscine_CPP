@@ -7,24 +7,36 @@
 
 #include <string>
 
+class SuperTrap;
+
 class NinjaTrap : public virtual ClapTrap {
 	
 	protected:
 		NinjaTrap( void );
 
+		const static int _defaultHitPoints;
+		const static int _defaultEnergyPoints;
+		const static int _defaultLevel;
+		const static int _defaultMeleeDmg;
+		const static int _defaultRangedDmg;
+		const static int _defaultArmor;
+
 	public:
 		NinjaTrap( std::string name );
 		NinjaTrap( NinjaTrap const & ninjaTrap );
-		virtual ~NinjaTrap( void );
+		~NinjaTrap( void );
 
 		NinjaTrap &    operator=( NinjaTrap const & rhs );
 
-		virtual void rangedAttack( std::string const & target );
-		virtual void meleeAttack( std::string const & target );
-		void ninjaShoebox( FragTrap & fragTrap );
-		void ninjaShoebox( ClapTrap & clapTrap );
-		void ninjaShoebox( NinjaTrap & ninjaTrap );
-		void ninjaShoebox( ScavTrap & scavTrap );
+		void rangedAttack( std::string const & target ) const;
+		void meleeAttack( std::string const & target ) const;
+		void ninjaShoebox( FragTrap & fragTrap ) const;
+		void ninjaShoebox( ClapTrap & clapTrap ) const;
+		void ninjaShoebox( NinjaTrap & ninjaTrap ) const;
+		void ninjaShoebox( ScavTrap & scavTrap ) const;
+		void ninjaShoebox( SuperTrap & superTrap ) const;
 };
+
+#include "SuperTrap.hpp"
 
 #endif

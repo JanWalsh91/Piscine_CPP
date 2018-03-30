@@ -4,18 +4,23 @@
 #include <string>
 
 PowerFist::PowerFist( void ) : PowerFist::AWeapon( "Power Fist", 8, 50 ) {
-	return ;
-};
+	std::cout << "Creating Power Fist." << std::endl;
+}
 
 PowerFist::PowerFist( PowerFist const & powerFist ) {
+	std::cout << "Copying Power Fist." << std::endl;
 	*this = powerFist;
-	return ;
-};
+}
 
 PowerFist::~PowerFist( void ) {
-	return ;
-};
+	std::cout << "Destroying Power Fist." << std::endl;
+}
 
 void PowerFist::attack( void ) const {
-	std::cout << "* pschhh... SBAM! **" << std::endl;
-};
+	std::cout << "* pschhh... SBAM! *" << std::endl;
+}
+
+PowerFist &    PowerFist::operator=( PowerFist const & rhs ) {
+	AWeapon::operator=( rhs );
+	return (*this);
+}

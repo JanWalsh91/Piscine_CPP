@@ -7,13 +7,16 @@
 
 class Peon : public Victim {
 
+	protected:
+		Peon( void );
+
 	public:
 		Peon( std::string name );
-		~Peon( void );
+		virtual ~Peon( void );
 
 		Peon &    operator=( Peon const & rhs );
 
-		void getPolymorphed( void ) const;
+		virtual void getPolymorphed( void ) const;
 };
 
 #endif

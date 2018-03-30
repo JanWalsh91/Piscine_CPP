@@ -25,6 +25,7 @@ AssaultTerminator &    AssaultTerminator::operator=( AssaultTerminator const & r
 };
 
 AssaultTerminator*	AssaultTerminator::clone( void ) const {
+	std::cout << "Clone Assault Terminator" << std::endl;
 	return ( new AssaultTerminator(*this) );
 };
 

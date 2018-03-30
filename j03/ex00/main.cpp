@@ -7,6 +7,7 @@ int    main ( void ) {
 	fragTrap.rangedAttack(targets[std::rand() % 5]);
 	fragTrap.meleeAttack(targets[std::rand() % 5]);
 
+	fragTrap.takeDamage(1);
 	fragTrap.takeDamage(20);
 	fragTrap.vaulthunter_dot_exe(targets[std::rand() % 5]);
 	fragTrap.takeDamage(30);

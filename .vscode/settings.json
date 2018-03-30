@@ -25,6 +25,8 @@
 		"__locale": "cpp",
 		"stack": "cpp",
 		"istream": "cpp",
-		"ios": "cpp"
+		"ios": "cpp",
+		"__functional_03": "cpp",
+		"functional": "cpp"
 	}
 }

@@ -15,6 +15,7 @@ int    main ( void ) {
 	
 	max.ninjaShoebox(nino);
 	max.vaulthunter_dot_exe(targets[std::rand() % 5]);
+	max.ninjaShoebox( max );
 	max.meleeAttack(targets[std::rand() % 5]);
 	max.rangedAttack(targets[std::rand() % 5]);
 	max.takeDamage(60);

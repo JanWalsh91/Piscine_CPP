@@ -10,14 +10,14 @@ class AWeapon {
 		std::string		_name;
 		unsigned int	_apcost;
 		unsigned int	_damage;
+		AWeapon( void );
 
 	public:
-		AWeapon( void );
 		AWeapon( std::string const & name, int apcost, int damage );
 		AWeapon( AWeapon const & aWeapon );
 		virtual ~AWeapon( void );
 
-		std::string virtual getName( void ) const;
+		std::string const getName( void ) const;
 		int getAPCost( void ) const;
         int getDamage( void ) const;
 		
