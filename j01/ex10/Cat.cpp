@@ -2,62 +2,65 @@
 
 #include <fstream>
 #include <iostream>
+#include <cerrno>
 
-Cat::Cat( void ) {
-	return ;
-}
+Cat::Cat( void ) {}
 
-Cat::~Cat( void ) {
-	return ;
-};
+Cat::~Cat( void ) {}
 
 void Cat::handleArg( std::string arg ) {
-	// std::cout << "handleArg" << std::endl;
 	if (arg == "-") {
 		this->readSI();
 	}
 	else {
 		this->writeFileToSO( arg );
 	}
-};
+}
 
 void Cat::writeFileToSO( std::string file ) {
 	std::ifstream is(file);
-
 	std::string fileContents;
 	std::string line;
+	char		c = 0;
 
 	if (is.is_open()) {
 		while (getline(is, line)){
 			fileContents += line;
+			if ( is.eof() ) {
+				is.seekg(-1, std::ios_base::end);
+				is.get(c);
+				if ( c == '\n' ) {
+					fileContents += "\n";
+				}
+			}
+			else {
+				fileContents += "\n";
+			}
 		}
-	}	
-	is.close();
-
+		if ( is.fail() && errno != 0 ) {
+			std::cout << "cat: " << file << ": ";
+			std::cout << std::strerror(errno) << std::endl;
+			return ;
+		}
+		is.close();
+	}
+	else if ( is.fail() && errno != 0 ) {
+		std::cout << "cat: " << file << ": ";
+		std::cout << std::strerror(errno) << std::endl;
+		return ;
+	}
 	std::cout << fileContents;
-};
+}
 
 void Cat::readSI( void ) {
 	std::string s;
-	// std::cin.clear();
-	// std::cin.ignore();
-	// std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	
-	// char c;
-	// while (1) {
-	// 	std::cin >> c;
-		
-	// }
 
-	while (1) {
-		// getline( std::cin, s );
-		// std::cout << "getline: " << i << std::endl; 
-		if (!getline( std::cin, s )) {
-			// std::cout << "std::cin false" << std::endl;
-			// std::cin.clear();
-			break ;
+	while(getline(std::cin, s)) {
+
+		if ( std::cin.eof() ) {
+			std::cout << s << std::endl;
+			return ;
 		}
-		// std::cout << "You just wrote: " << (int)(s[0]) << std::endl;
-		std::cout << s << std::endl; 
+		std::cout << s << std::endl;
 	}
-};
+}

@@ -3,18 +3,14 @@
 
 #include <iostream>
 
-HumanB::HumanB( std::string name) : name(name) {
-	return ;
-};
+HumanB::HumanB( std::string name) : _name(name) {}
 
-HumanB::~HumanB( void ) {
-	return ;
-};
+HumanB::~HumanB( void ) {}
 
 void HumanB::setWeapon( Weapon & weapon ) {
-	this->weapon = &weapon;
+	this->_weapon = &weapon;
 }
 
-void HumanB::attack( void ) {
-	std::cout << this->name << " attacks with " << this->weapon->getType() << std::endl;
-};
+void HumanB::attack( void ) const {
+	std::cout << this->_name << " attacks with " << this->_weapon->getType() << std::endl;
+}

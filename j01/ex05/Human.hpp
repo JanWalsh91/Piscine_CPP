@@ -7,7 +7,7 @@
 
 class Human {
 	private:
-		Brain* const _brain;
+		Brain const _brain;
 
 	public:
 		Human( void );

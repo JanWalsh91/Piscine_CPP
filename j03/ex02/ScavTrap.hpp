@@ -13,12 +13,12 @@ class ScavTrap : public ClapTrap {
 	public:
 		ScavTrap( std::string name );
 		ScavTrap( ScavTrap const & scavTrap );
-		virtual ~ScavTrap( void );
+		~ScavTrap( void );
 
 		ScavTrap &    operator=( ScavTrap const & rhs );
 
-		virtual void rangedAttack( std::string & target );
-		virtual void meleeAttack( std::string & target );
+		void rangedAttack( std::string const & target );
+		void meleeAttack( std::string const & target );
 		void challengeNewcomer( std::string const & target );
 };
 

@@ -12,7 +12,7 @@ class Zombie {
 		Zombie( void );
 		~Zombie( void );
 		
-		void announce( void );
+		void announce( void ) const;
 };
 
 #endif

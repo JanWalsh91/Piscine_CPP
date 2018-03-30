@@ -1,29 +1,22 @@
-#include "Zombie.hpp"
 #include "ZombieEvent.hpp"
 
 #include <iostream>
-#include <string>
 
-ZombieEvent::ZombieEvent( void ) {
-	this->_type = "undefined";
-	return ;
-}
+ZombieEvent::ZombieEvent( void ) : _type("undefined") {}
 
-ZombieEvent::~ZombieEvent( void ) {
-	return ;
-}
+ZombieEvent::~ZombieEvent( void ) {}
 
-void ZombieEvent::setZombieType( std:: string type ){
+void ZombieEvent::setZombieType( std::string type ){
 	this->_type = type;
 	return ;
 }
 
-Zombie* ZombieEvent::newZombie( std::string name ) {	
+Zombie* ZombieEvent::newZombie( std::string name ) const {	
 	return new Zombie(name, this->_type);
 }
 
-void ZombieEvent::randomChump( void ) {
-	std::string names[6] = { "Gertrude", "Josephine", "Marilla", "Claire", "Hope", "Angelina"};
+void ZombieEvent::randomChump( void ) const {
+	std::string names[6] = { "Gertrude", "Josephine", "Marilla", "Claire", "Hope", "Angelina" };
 	
 	Zombie zombie(names[rand() % 6], this->_type);
 	zombie.announce();

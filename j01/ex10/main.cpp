@@ -1,10 +1,10 @@
 #include "Cat.hpp"
 
-#include <iostream>
+void leave(int sig);
 
 int main ( int ac, char** av ) {
 	Cat cat;
-
+	
 	if (ac == 1) {
 		cat.handleArg("-");
 	}

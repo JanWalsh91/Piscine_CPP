@@ -1,10 +1,10 @@
-NAME = eval_expr
+NAME = cato9tails
 
 CC = clang++
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRC_NAME = main.cpp Fixed.cpp Eval.cpp
+SRC_NAME = main.cpp Cat.cpp
 
 OBJ_NAME = $(SRC_NAME:.cpp=.o)
 

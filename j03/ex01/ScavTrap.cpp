@@ -22,9 +22,9 @@ ScavTrap::ScavTrap( std::string name ) :
 }
 
 ScavTrap::ScavTrap( ScavTrap const & scavTrap ) {
-	std::cout << "SC4V-TP " << this->_name << " copied ! Poof ! " << std::endl;
 	std::srand(std::time(nullptr));
 	*this = scavTrap;
+	std::cout << "SC4V-TP " << this->_name << " copied ! Poof ! " << std::endl;
 }
 
 ScavTrap::~ScavTrap( void ) {
@@ -44,7 +44,7 @@ ScavTrap &    ScavTrap::operator=( ScavTrap const & rhs ) {
 	return (*this);
 }
 
-void ScavTrap::rangedAttack( std::string & target ) {
+void ScavTrap::rangedAttack( std::string const & target ) {
 	if (this->_hitPoints == 0) {
 		std::cout << "SC4V-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;
@@ -52,7 +52,7 @@ void ScavTrap::rangedAttack( std::string & target ) {
 	std::cout << "SC4V-TP " << this->_name << " attacks " << target << " at range with its unicorn gun blaster, causing " << this->_rangedDmg << " points of damage !" << std::endl;
 }
 
-void ScavTrap::meleeAttack( std::string & target ) {
+void ScavTrap::meleeAttack( std::string const & target ) {
 	if (this->_hitPoints == 0) {
 		std::cout << "SC4V-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;
@@ -60,30 +60,30 @@ void ScavTrap::meleeAttack( std::string & target ) {
 	std::cout << "SC4V-TP " << this->_name << " melee attacks " << target << " with its rainbow dagger, causing " << this->_meleeDmg << " points of damage !" << std::endl;
 }
 
-void ScavTrap::takeDamage( unsigned int dmg ) {
+void ScavTrap::takeDamage( unsigned int amount ) {
 	if (this->_hitPoints == 0) {
 		std::cout << "SC4V-TP " << this->_name << " is being tickled to death ! " << std::endl;
 		return ;
 	}
-	if ((int)dmg <= this->_armor) {
+	if ((int)amount <= this->_armor) {
 		std::cout << "SC4V-TP " << this->_name << " resists the dammage ! " << std::endl;
 		return ;
 	} 
-	dmg = dmg - this->_armor;
-	std::cout << "SC4V-TP " << this->_name << " takes " << dmg << " points of damage ! " << std::endl;
-	this->_hitPoints -= dmg;
+	amount = amount - this->_armor;
+	std::cout << "SC4V-TP " << this->_name << " takes " << amount << " points of damage ! " << std::endl;
+	this->_hitPoints -= amount;
 	if (this->_hitPoints <= 0) {
 		std::cout << "SC4V-TP " << this->_name << "is KO'ed ! " << std::endl;
 		this->_hitPoints = 0;
 	}
 }
 
-void ScavTrap::beRepaired( unsigned int hitPoints ) {
-	std::cout << "SC4V-TP " << this->_name << " is repaired for " << hitPoints << " points !" << std::endl;
+void ScavTrap::beRepaired( unsigned int amount ) {
+	std::cout << "SC4V-TP " << this->_name << " is repaired for " << amount << " points !" << std::endl;
 	if (this->_hitPoints == 0) {
 		std::cout << "SC4V-TP " << this->_name << " is back up !" << std::endl;
 	}
-	this->_hitPoints += hitPoints;
+	this->_hitPoints += amount;
 	if ( this->_hitPoints > this->_maxHitPoints ) {
 		this->_hitPoints = this->_maxHitPoints;
 	}

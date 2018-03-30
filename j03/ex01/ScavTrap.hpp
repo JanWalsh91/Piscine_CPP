@@ -20,14 +20,14 @@ class ScavTrap {
 	public:
 		ScavTrap( std::string name );
 		ScavTrap( ScavTrap const & scavTrap );
-		virtual ~ScavTrap( void );
+		~ScavTrap( void );
 
 		ScavTrap &    operator=( ScavTrap const & rhs );
 
-		void rangedAttack( std::string & target );
-		void meleeAttack( std::string & target );
-		void takeDamage( unsigned int dmg );
-		void beRepaired( unsigned int hitPoints );
+		void rangedAttack( std::string const & target );
+		void meleeAttack( std::string const & target );
+		void takeDamage( unsigned int amount );
+		void beRepaired( unsigned int amount );
 		void challengeNewcomer( std::string const & target );
 };
 

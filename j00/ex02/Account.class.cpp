@@ -37,11 +37,8 @@ Account::~Account( void ) {
 		<< "amount:"
 		<< this->_amount
 		<< ";"
-		<< "closed";
-	
-	if (this->_accountIndex != 0) {
-		std::cout << std::endl;
-	}
+		<< "closed"
+		<< std::endl;
 };
 
 int	Account::getNbAccounts( void ){
@@ -161,8 +158,6 @@ void	Account::displayStatus( void ) const {
 };
 
 void Account::_displayTimestamp( void ) {
-	// std::cout << "[20150406_153629] ";
-	// return ;
 	time_t t = time(0);
     struct tm * now = localtime( & t );
     std::cout 

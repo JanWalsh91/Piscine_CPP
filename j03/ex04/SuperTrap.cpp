@@ -32,10 +32,10 @@ SuperTrap &    SuperTrap::operator=( SuperTrap const & rhs ) {
 	return (*this);
 }
 
-void SuperTrap::rangedAttack( std::string & target ) {
+void SuperTrap::rangedAttack( std::string const & target ) {
 	FragTrap::rangedAttack(target);
 }
 
-void SuperTrap::meleeAttack( std::string & target ) {
+void SuperTrap::meleeAttack( std::string const & target ) {
 	NinjaTrap::rangedAttack(target);
 }

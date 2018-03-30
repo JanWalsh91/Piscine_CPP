@@ -41,7 +41,7 @@ void	ClapTrap::_initRand( void ) {
 	}
 }
 
-void ClapTrap::rangedAttack( std::string & target ) {
+void ClapTrap::rangedAttack( std::string const & target ) {
 	if (this->_hitPoints == 0) {
 		std::cout << "CL4P-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;
@@ -49,7 +49,7 @@ void ClapTrap::rangedAttack( std::string & target ) {
 	std::cout << "CL4P-TP " << this->_name << " attacks " << target << " at range with its unicorn gun blaster, causing " << this->_rangedDmg << " points of damage !" << std::endl;
 }
 
-void ClapTrap::meleeAttack( std::string & target ) {
+void ClapTrap::meleeAttack( std::string const & target ) {
 	if (this->_hitPoints == 0) {
 		std::cout << "CL4P-TP " << this->_name << " is KO'ed and can't attack ! " << std::endl;
 		return ;
@@ -57,30 +57,30 @@ void ClapTrap::meleeAttack( std::string & target ) {
 	std::cout << "CL4P-TP " << this->_name << " melee attacks " << target << " with its rainbow dagger, causing " << this->_meleeDmg << " points of damage !" << std::endl;
 }
 
-void ClapTrap::takeDamage( unsigned int dmg ) {
+void ClapTrap::takeDamage( unsigned int amount ) {
 	if (this->_hitPoints == 0) {
 		std::cout << "CL4P-TP " << this->_name << " is being pumelled to death ! " << std::endl;
 		return ;
 	}
-	if ((int)dmg <= this->_armor) {
+	if ((int)amount <= this->_armor) {
 		std::cout << "CL4P-TP " << this->_name << " resists the dammage ! " << std::endl;
 		return ;
 	} 
-	dmg = dmg - this->_armor;
-	std::cout << "CL4P-TP " << this->_name << " takes " << dmg << " points of damage ! " << std::endl;
-	this->_hitPoints -= dmg;
+	amount = amount - this->_armor;
+	std::cout << "CL4P-TP " << this->_name << " takes " << amount << " points of damage ! " << std::endl;
+	this->_hitPoints -= amount;
 	if (this->_hitPoints <= 0) {
 		std::cout << "CL4P-TP " << this->_name << " is KO'ed ! " << std::endl;
 		this->_hitPoints = 0;
 	}
 }
 
-void ClapTrap::beRepaired( unsigned int hitPoints ) {
-	std::cout << "CL4P-TP " << this->_name << " is repaired for " << hitPoints << " points !" << std::endl;
+void ClapTrap::beRepaired( unsigned int amount ) {
+	std::cout << "CL4P-TP " << this->_name << " is repaired for " << amount << " points !" << std::endl;
 	if (this->_hitPoints == 0) {
 		std::cout << "CL4P-TP " << this->_name << " is back up !" << std::endl;
 	}
-	this->_hitPoints += hitPoints;
+	this->_hitPoints += amount;
 	if ( this->_hitPoints > this->_maxHitPoints ) {
 		this->_hitPoints = this->_maxHitPoints;
 	}

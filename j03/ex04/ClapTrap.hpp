@@ -24,13 +24,13 @@ class ClapTrap {
 	public:
 		ClapTrap( std::string name );
 		ClapTrap( ClapTrap const & ClapTrap );
-		virtual ~ClapTrap( void );
+		~ClapTrap( void );
 		
 		std::string getName( void );
-		virtual void rangedAttack( std::string & target );
-		virtual void meleeAttack( std::string & target );
-		void takeDamage( unsigned int dmg );
-		void beRepaired( unsigned int hitPoints );
+		virtual void rangedAttack( std::string const & target );
+		virtual void meleeAttack( std::string const & target );
+		void takeDamage( unsigned int amount );
+		void beRepaired( unsigned int amount );
 
 		ClapTrap &    operator=( ClapTrap const & rhs );
 };

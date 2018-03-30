@@ -12,7 +12,10 @@ int main( void ) {
 
 	ZombieEvent superNice;
 	superNice.setZombieType("superNice");
+	
 	Zombie* bob = superNice.newZombie("Bob");
 	bob->announce();
+	delete bob;
+
 	return (0);
 }

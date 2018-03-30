@@ -4,8 +4,11 @@
 #include <string>
 
 class Brain {
+	private:
+		int _brainPower;
+
 	public:
-		Brain( void );
+		Brain( int brainPower );
 		~Brain( void );
 
 		std::string identify( void ) const;

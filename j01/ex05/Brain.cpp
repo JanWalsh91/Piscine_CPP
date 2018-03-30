@@ -1,16 +1,13 @@
 #include "Brain.hpp"
 
 #include <iostream>
-#include <string>
 #include <sstream>
 
-Brain::Brain( void ) {
-	return ;
+Brain::Brain( int brainPower  ) : _brainPower( brainPower ) {
+	std::cout<< "Created brain with brainpower " << this->_brainPower << std::endl;
 }
 
-Brain::~Brain( void ) {
-	return ;
-}
+Brain::~Brain( void ) {}
 
 std::string Brain::identify( void ) const {
 	std::stringstream ss;

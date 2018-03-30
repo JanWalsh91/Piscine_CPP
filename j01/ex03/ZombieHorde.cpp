@@ -1,18 +1,16 @@
 #include "ZombieHorde.hpp"
-#include "Zombie.hpp"
 
-ZombieHorde::ZombieHorde( int N ) {
-	this->zombies = new Zombie[N];
-	this->_size = N;
+ZombieHorde::ZombieHorde( int N ) : _size(N), _zombies(new Zombie[N]) {
 	this->announce();
 }
 
 ZombieHorde::~ZombieHorde( void ) {
-	delete [] this->zombies;
+	if (this->_zombies)
+		delete [] this->_zombies;
 }
 
-void ZombieHorde::announce() {
+void ZombieHorde::announce( void ) const {
 	for (int i = 0; i < this->_size; i++) {
-		this->zombies[i].announce();
+		this->_zombies[i].announce();
 	}
 }

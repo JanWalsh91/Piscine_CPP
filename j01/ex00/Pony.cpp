@@ -1,6 +1,5 @@
 #include "Pony.hpp"
 
-#include <string>
 #include <iostream>
 
 Pony::Pony ( std::string color ):  _color(color) {

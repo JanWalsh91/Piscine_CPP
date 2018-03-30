@@ -19,6 +19,9 @@ int    main ( void ) {
 	kreig.vaulthunter_dot_exe(targets[std::rand() % 5]);
 	std::cout << "----" << std::endl;
 
+	FragTrap a = kreig;
+	FragTrap c = FragTrap(kreig);
+
 	ScavTrap sally("Sally");
 	sally.meleeAttack(targets[std::rand() % 5]);
 	sally.rangedAttack(targets[std::rand() % 5]);
@@ -26,5 +29,8 @@ int    main ( void ) {
 	sally.challengeNewcomer(targets[std::rand() % 5]);
 	sally.challengeNewcomer(targets[std::rand() % 5]);
 	sally.takeDamage(20);
+
+	ScavTrap a1 = sally;
+	ScavTrap c1 = ScavTrap(sally);
 	return (0);
 }

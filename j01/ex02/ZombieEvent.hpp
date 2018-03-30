@@ -1,8 +1,9 @@
 #ifndef ZOMBIE_EVENT_H
 # define ZOMBIE_EVENT_H
 
-#include <string>
-#include "Zombie.hpp"
+# include "Zombie.hpp"
+
+# include <string>
 
 class ZombieEvent {
 	private:
@@ -11,9 +12,9 @@ class ZombieEvent {
 	public:
 		ZombieEvent( void );
 		~ZombieEvent( void );
-		void setZombieType( std:: string type );
-		Zombie* newZombie( std::string name );
-		void randomChump( void );
+		void setZombieType( std::string type );
+		Zombie* newZombie( std::string name ) const;
+		void randomChump( void ) const;
 };
 
 #endif

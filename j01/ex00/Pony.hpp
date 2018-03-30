@@ -11,7 +11,6 @@ class Pony {
 		Pony(std::string color);
 		~Pony( void );
 		void neigh( void );
-
 };
 
 #endif
