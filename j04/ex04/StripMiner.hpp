@@ -6,8 +6,6 @@
 
 class StripMiner : public IMiningLaser {
 
-	private:
-
 	public:
 		StripMiner( void );
 		StripMiner( StripMiner const & stripMiner );

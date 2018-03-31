@@ -6,8 +6,6 @@
 
 class DeepCoreMiner : public IMiningLaser {
 
-	private:
-
 	public:
 		DeepCoreMiner( void );
 		DeepCoreMiner( DeepCoreMiner const & deepCoreMiner );

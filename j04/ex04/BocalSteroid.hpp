@@ -2,7 +2,8 @@
 # define BOCAL_STEROID_H
 
 # include "IAsteroid.hpp"
-# include "IMiningLaser.hpp"
+# include "DeepCoreMiner.hpp"
+# include "StripMiner.hpp"
 
 class BocalSteroid : public IAsteroid {
 
@@ -13,8 +14,8 @@ class BocalSteroid : public IAsteroid {
 
 		BocalSteroid &    operator=( BocalSteroid const & rhs );
 
-		std::string beMined( IAsteroid* asteroid ) const ;
-		std::string beMined( IMiningLaser* miningLaser ) const ;
+		std::string beMined( DeepCoreMiner* deepCoreMiner ) const ;
+		std::string beMined( StripMiner* stripMiner ) const ;
 		std::string getName( void ) const ;
 };
 
