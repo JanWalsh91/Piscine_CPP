@@ -10,12 +10,7 @@ class AMateria;
 class ICharacter {
 
 	public:
-		ICharacter( void );
-		ICharacter( ICharacter const & iCharacter );
 		virtual ~ICharacter( void ) {}
-
-		ICharacter &    operator=( ICharacter const & rhs );
-
 		virtual std::string const & getName( void ) const = 0;
 		virtual void equip( AMateria* m ) = 0;
 		virtual void unequip( int idx ) = 0;

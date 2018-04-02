@@ -9,7 +9,6 @@ class SpaceMarineNode;
 class Squad : public ISquad {
 	
 	private:
-		int					_unitCount;
 		SpaceMarineNode*	_marines;
 
 	public:

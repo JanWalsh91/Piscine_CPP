@@ -2,11 +2,8 @@
 # define CURE_H
 
 # include "AMateria.hpp"
-# include "ICharacter.hpp"
 
 class Cure : public AMateria {
-
-	private:
 
 	public:
 		Cure( void );
