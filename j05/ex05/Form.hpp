@@ -22,7 +22,7 @@ class Form {
 		Form( void );
 		Form( std::string name, int minSignGrade, int minExecuteGrade, std::string target  );
 		Form( Form const & form );
-		virtual ~Form( void );
+		virtual  ~Form( void );
 
 		Form &    operator=( Form const & rhs );
 
@@ -35,16 +35,39 @@ class Form {
 		virtual void	execute( Bureaucrat const & executor ) const;
 
 		class GradeTooHighException : public std::exception {
-			virtual const char* what() const throw();
+			public:
+				GradeTooHighException( void );
+				GradeTooHighException( GradeTooHighException const & e );
+				virtual ~GradeTooHighException( void ) throw();
+				GradeTooHighException &    operator=( GradeTooHighException const & rhs ) throw() ;
+				virtual const char* what() const throw();
 		};
+
 		class GradeTooLowException : public std::exception {
-			virtual const char* what() const throw();
+			public:
+				GradeTooLowException( void );
+				GradeTooLowException( GradeTooLowException const & e );
+				virtual ~GradeTooLowException( void ) throw();
+				GradeTooLowException &    operator=( GradeTooLowException const & rhs ) ;
+				virtual const char* what() const throw();
 		};
+
 		class AlreadySignedException : public std::exception {
-			virtual const char* what() const throw();
+			public:
+				AlreadySignedException( void );
+				AlreadySignedException( AlreadySignedException const & e );
+				virtual ~AlreadySignedException( void ) throw();
+				AlreadySignedException &    operator=( AlreadySignedException const & rhs ) ;
+				virtual const char* what() const throw();
 		};
+
 		class NotSignedException : public std::exception {
-			virtual const char* what() const throw();
+			public:
+				NotSignedException( void );
+				NotSignedException( NotSignedException const & e );
+				virtual ~NotSignedException( void ) throw();
+				NotSignedException &    operator=( NotSignedException const & rhs ) ;
+				virtual const char* what() const throw();
 		};
 };
 

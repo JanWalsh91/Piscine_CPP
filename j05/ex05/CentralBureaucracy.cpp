@@ -4,69 +4,82 @@
 #include <exception>
 #include <stdexcept>
 
-CentralBureaucracy::CentralBureaucracy( void ) {
-	// std::cout << "Default constructor called" << std::endl;
-	for ( int i = 0; i < 20; i++ ) {
-		this->_officeBlocks[i] = new OfficeBlock();
-	}
-	this->_targetList = NULL;
-	return ;
-};
+/* ========== CentralBureaucracy ========== */
+
+CentralBureaucracy::CentralBureaucracy( void ) :_targetList(NULL) {}
 
 CentralBureaucracy::CentralBureaucracy( CentralBureaucracy const & centralBureaucracy ) {
-	// std::cout << "Copy constructor called" << std::endl;
-	for ( int i = 0; i < 20; i++ ) {
-		this->_officeBlocks[i] = new OfficeBlock(*centralBureaucracy.getOfficeBlock(i));
-	}
-	this->_targetList = NULL;
 	*this = centralBureaucracy;
-	return ;
-};
+}
 
 CentralBureaucracy::~CentralBureaucracy( void ) {
-	// std::cout << "Destructor called" << std::endl;
-	for ( int i = 0; i < 20; i++ ) {
-		delete this->_officeBlocks[i];
+	TargetList *ptr;
+	TargetList *tmp;
+	ptr = this->_targetList;
+
+	if ( ptr ) {
+		while ( ptr->next != NULL ) {
+			tmp = ptr;
+			ptr = ptr->next;
+			delete tmp;
+		}
 	}
-	return ;
-};
+}
 
 CentralBureaucracy &    CentralBureaucracy::operator=( CentralBureaucracy const & rhs ) {
-	for ( int i = 0; i < 20; i++ ) {
-		this->_officeBlocks[i] = new OfficeBlock(*rhs.getOfficeBlock(i));
-	}
-	return (*this);
-};
+	TargetList *ptr;
+	TargetList *ptr2;
+	TargetList *tmp;
 
-const OfficeBlock* CentralBureaucracy::getOfficeBlock( int i ) const {
-	if ( i < 0 || i > 20 ) {
-		throw std::out_of_range("Central Bureaucracy only has 20 office blocks.");
+	ptr = this->_targetList;
+
+	if ( ptr ) {
+		while ( ptr->next != NULL ) {
+			tmp = ptr;
+			ptr = ptr->next;
+			delete tmp;
+			tmp = NULL;
+		}
 	}
-	return ( this->_officeBlocks[i] );
-};
+	this->_targetList = NULL;
+	
+	ptr = rhs._targetList;
+	if ( ptr != NULL ) {
+		this->_targetList = ptr;
+		ptr2 = this->_targetList;
+		while ( ptr->next != NULL ) {
+			ptr = ptr->next;
+			ptr2 = ptr;
+			ptr2 = ptr2->next;
+		}
+	}
+	// *this->_officeBlocks = rhs._officeBlocks; // NO ASSIGNATION FOR OFFICE BLOCKS
+	( void )rhs;
+	return (*this);
+}
 
 void CentralBureaucracy::addBureaucrat( Bureaucrat& bureaucrat ) {
-	OfficeBlock* officeBlock = NULL;
+	std::cout << "addBureaucrat " << std::endl;
 
 	for ( int i = 0; i < 20; i++ ) {
-		officeBlock = _officeBlocks[i];
-		if ( officeBlock->getIntern() == NULL ) {
+		if ( this->_officeBlocks[i].getIntern() == NULL ) {
 			Intern joe;
-			officeBlock->setIntern( joe );
+			this->_officeBlocks[i].setIntern( joe );
 		}
-		if ( officeBlock->getSigner() == NULL ) {
-			officeBlock->setSigner( bureaucrat );
+		if ( this->_officeBlocks[i].getSigner() == NULL ) {
+			this->_officeBlocks[i].setSigner( bureaucrat );
 			return ;
 		}
-		else if ( officeBlock->getExecutor() == NULL ) {
-			officeBlock->setExecutor( bureaucrat );
+		else if ( this->_officeBlocks[i].getExecutor() == NULL ) {
+			this->_officeBlocks[i].setExecutor( bureaucrat );
 			return ;
 		}
 	}
-};
+	throw CentralBureaucracy::BureaucratRejectedException();
+}
 
 void CentralBureaucracy::queueUp( std::string target ) {
-	// std::cout << "queueUp " << target << std::endl;
+	std::cout << "queueUp " << target << std::endl;
 	TargetList* link = new TargetList;
 
 	link->name = target;
@@ -83,7 +96,7 @@ void CentralBureaucracy::queueUp( std::string target ) {
 		ptr = ptr->next;
 	}
 	ptr->next = link;
-};
+}
 
 void CentralBureaucracy::doBureaucracy( void ) {
 	// std::cout << "doBureaucracy" << std::endl;
@@ -93,25 +106,43 @@ void CentralBureaucracy::doBureaucracy( void ) {
 	TargetList* ptr = this->_targetList;
 
 	if ( ptr == NULL ) {
-		// std::cout << "no targets" << std::endl;
 		return ;
 	}
 	int r;
-	int i = 0;
 	while ( ptr ) {
-		// std::cout << "doBureaucracy round" << std::endl;
 		r = std::rand() % 3;
-		try {
-			this->_officeBlocks[i]->doBureaucracy( bitsOfBureaucracy[r], ptr->name );
-		}
-		catch (std::exception & e) {
-			std::cout << e.what() << std::endl;
+		for ( int i = 0; i < 20; ++i ) {
+			try {
+				this->_officeBlocks[i].doBureaucracy( bitsOfBureaucracy[r], ptr->name );
+			}
+			catch (std::exception & e) {
+				std::cout << e.what() << std::endl;
+			}
 		}
 		ptr = ptr->next;
-		++i;
 	}
-};
+}
+
+
+
+
+
+
+/* ========== BureaucratRejectedException ========== */
+
+CentralBureaucracy::BureaucratRejectedException::BureaucratRejectedException( void ) {}
+
+CentralBureaucracy::BureaucratRejectedException::BureaucratRejectedException( BureaucratRejectedException const & e ) {
+	*this = e;
+}
+
+CentralBureaucracy::BureaucratRejectedException::~BureaucratRejectedException( void ) throw() {}
+
+CentralBureaucracy::BureaucratRejectedException &    CentralBureaucracy::BureaucratRejectedException::operator=( CentralBureaucracy::BureaucratRejectedException const & rhs ) {
+	( void )rhs;
+	return *this;
+}
 
 const char* CentralBureaucracy::BureaucratRejectedException::what() const throw() {
 	return "Buereaucrat rejected";
-};
+}

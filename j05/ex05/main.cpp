@@ -5,24 +5,41 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <ctime>
 
 int    main ( void ) {
-	// test a lot , may segfault....
 	CentralBureaucracy central;
+	std::srand(std::time(nullptr));
 
-
-	for ( int i = 0; i < 20; i++ ) {
-		Bureaucrat b1 = Bureaucrat("B", 100);
-		Bureaucrat b2 = Bureaucrat("B", 20);
-
-		central.addBureaucrat(b1);
-		central.addBureaucrat(b2);
-		std::ostringstream oss;
-		oss << i;
-		central.queueUp( oss.str() );
+	int y;
+	for ( int i = 0; i < 50; i++ ) {
+		y = std::rand() % 160;
+		Bureaucrat *b1;
+		try {
+			b1 = new Bureaucrat("B", y);		
+		}
+		catch ( std::exception & e ) {
+			std::cout << e.what() << std::endl;
+			continue ;
+		}
+		try {
+			central.addBureaucrat(*b1);
+		}
+		catch ( std::exception & e ) {
+			std::cout << e.what() << std::endl;
+		}
 	}
 
-	central.doBureaucracy();
+	std::string targets[] = {"Angel", "Bob", "Cherry"};
+	for ( int i = 0; i < 10; ++i ) {
+		central.queueUp( targets[ std::rand() % 3 ] );
+	}
 
+	try {
+		central.doBureaucracy();
+	}
+	catch ( std::exception & e ) {
+		std::cout << e.what() << std::endl;
+	}
 	return (0);
 }

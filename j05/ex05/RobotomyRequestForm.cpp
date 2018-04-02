@@ -1,21 +1,16 @@
 #include "RobotomyRequestForm.hpp"
 
-#include <iostream>
-#include <string>
+/* ========== RobotomyRequestForm ========== */
 
 RobotomyRequestForm::RobotomyRequestForm( void ) :
 	Form("Robotomy Request Form", 145, 137, "Default Target") {
-
 	this->_initRand();
-	return ;
-};
+}
 
 RobotomyRequestForm::RobotomyRequestForm( std::string target ) :
 	Form("Robotomy Request Form", 145, 137, target) {
-	
 	this->_initRand();
-	return ;
-};
+}
 
 void	RobotomyRequestForm::execute( Bureaucrat const & executor ) const {
 	Form::execute( executor );
@@ -26,13 +21,18 @@ void	RobotomyRequestForm::execute( Bureaucrat const & executor ) const {
 	} else {
 		std::cout << "Robotomization failure ..." << std::endl;
 	}
-};
+}
 
-int RobotomyRequestForm::_randInit = 0;
+bool RobotomyRequestForm::_randInit = false;
 
 void	RobotomyRequestForm::_initRand( void ) {
-	if ( RobotomyRequestForm::_randInit == 0 ) {
+	if ( RobotomyRequestForm::_randInit == false ) {
 		std::srand(std::time(nullptr));
-		RobotomyRequestForm::_randInit = 1;
+		RobotomyRequestForm::_randInit = true;
 	}
-};
+}
+
+RobotomyRequestForm &    RobotomyRequestForm::operator=( RobotomyRequestForm const & rhs ) {
+	(void)rhs;
+	return (*this);
+}

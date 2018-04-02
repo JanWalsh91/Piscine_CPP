@@ -2,44 +2,74 @@
 
 #include <iostream>
 
+/* ========== Intern ========== */
+
 Intern::Intern( void ) {
-	return ;
-};
+	// std::cout << "Anonymous intern created" << std::endl;
+}
 
 Intern::Intern( Intern const & intern ) {
+	// std::cout << "Useless Intern copied" << std::endl;
 	*this = intern;
-	return ;
-};
+}
 
 Intern::~Intern( void ) {
-	return ;
-};
+	// std::cout << "Intern finished his internship" << std::endl;
+}
 
 Intern &    Intern::operator=( Intern const & rhs ) {
 	( void )rhs;
 	return (*this);
-};
+}
 
 Form*	Intern::makeForm( std::string type, std::string target ) {
-	Form* form;
+	std::string availableForms[3] = {
+		"shrubbery creation",
+		"robotomy request",
+		"presidential pardon"
+	};
+	
+	for ( int i = 0; i < 3; ++i ) {
+		if ( type == availableForms[i] ) {
+			Form * newForm = this->getForm[i]( target );
+			std::cout << "Intern creates " << *newForm << std::endl;
+			return newForm;
+		}
+	}
 
-	if ( type == "shrubbery creation" ) {
-		form = new ShrubberyCreationForm(target);
-	}
-	else if ( type == "robotomy request" ) {
-		form = new RobotomyRequestForm(target);
-	}
-	else if ( type == "presidential pardon" ) {
-		form = new PresidentialPardonForm(target);
-	}
-	else {
-		throw( Intern::FormTypeUnknownException() );
-	}
+	throw( Intern::FormTypeUnknownException() );
+}
 
-	std::cout << "Intern creates a " << form->getName() << " " << *form << std::endl;
-	return form;
+Form *	Intern::makePresidentialPardonForm( std::string target ) {
+	return new PresidentialPardonForm(target);
+}
+Form *	Intern::makeRobotomyRequestForm( std::string target ) {
+	return new RobotomyRequestForm(target);
+}
+Form *	Intern::makeShrubberyCreationForm( std::string target ) {
+	return new ShrubberyCreationForm(target);
+}
+const Intern::formGetter Intern::getForm[3] = {
+	&(Intern::makePresidentialPardonForm),
+	&(Intern::makeRobotomyRequestForm),
+	&(Intern::makeShrubberyCreationForm)
 };
+
+/* ========== FormTypeUnknownException ========== */
+
+Intern::FormTypeUnknownException::FormTypeUnknownException( void ) {}
+
+Intern::FormTypeUnknownException::FormTypeUnknownException( Intern::FormTypeUnknownException const & e ) {
+	*this = e;
+}
+
+Intern::FormTypeUnknownException::~FormTypeUnknownException( void ) throw() {}
+
+Intern::FormTypeUnknownException &    Intern::FormTypeUnknownException::operator=( Intern::FormTypeUnknownException const & rhs ) throw() {
+	( void )rhs;
+	return *this;
+}
 
 const char* Intern::FormTypeUnknownException::what() const throw() {
 	return "Form type unknown";
-};
+}

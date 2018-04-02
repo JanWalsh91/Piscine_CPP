@@ -4,9 +4,6 @@
 # include "OfficeBlock.hpp"
 # include "Bureaucrat.hpp"
 
-# include <exception>
-# include <string>
-
 struct TargetList {
 	std::string name;
 	TargetList* next;
@@ -15,7 +12,7 @@ struct TargetList {
 class CentralBureaucracy {
 
 	private:
-		OfficeBlock*	_officeBlocks[20];
+		OfficeBlock		_officeBlocks[20];
 		TargetList*		_targetList;
 
 	public:
@@ -25,18 +22,18 @@ class CentralBureaucracy {
 
 		CentralBureaucracy &    operator=( CentralBureaucracy const & rhs );
 
-
-		const OfficeBlock* getOfficeBlock( int i ) const;
 		void addBureaucrat( Bureaucrat& bureaucrat );
 		void queueUp( std::string target );
 		void doBureaucracy( void );
 
 		class BureaucratRejectedException : public std::exception {
-			virtual const char* what() const throw();
+			public:
+				BureaucratRejectedException( void );
+				BureaucratRejectedException( BureaucratRejectedException const & e );
+				virtual ~BureaucratRejectedException( void ) throw();
+				BureaucratRejectedException &    operator=( BureaucratRejectedException const & rhs ) ;
+				virtual const char* what() const throw();
 		};
-
-
-
 };
 
 #endif

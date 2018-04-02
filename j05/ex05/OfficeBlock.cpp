@@ -1,52 +1,45 @@
 #include "OfficeBlock.hpp"
 #include "Form.hpp"
 
-#include <iostream>
+/* ========== OfficeBlock ========== */
 
 OfficeBlock::OfficeBlock( void ) : 
 	_intern( NULL ), 
 	_signer( NULL ), 
 	_executor( NULL ) {
-	
-	return ;
-};
+}
 
 OfficeBlock::OfficeBlock( Intern& intern, Bureaucrat& signer, Bureaucrat& executor ) : 
 	_intern( &intern ), 
 	_signer( &signer ), 
 	_executor( &executor ) {
+}
 
-	return ;
-};
-
-OfficeBlock::~OfficeBlock( void ) {
-	return ;
-};
+OfficeBlock::~OfficeBlock( void ) {}
 
 void OfficeBlock::setIntern( Intern& intern ) {
 	this->_intern = &intern;
-};
+}
 
 void OfficeBlock::setSigner( Bureaucrat& signer ) {
 	this->_signer = &signer;
-};
+}
 
 void OfficeBlock::setExecutor( Bureaucrat& executor ) {
 	this->_executor = &executor;
-};
+}
 
-Intern* OfficeBlock::getIntern( void ) const {
-	return ( this->_intern );
-};
+const Intern * OfficeBlock::getIntern( void ) const {
+	return this->_intern;
+}
 
-Bureaucrat* OfficeBlock::getSigner( void ) const {
-	return ( this->_signer );
-};
+const Bureaucrat * OfficeBlock::getSigner( void ) const {
+	return this->_signer;
+}
 
-Bureaucrat* OfficeBlock::getExecutor( void ) const {
-	return ( this->_executor );
-};
-
+const Bureaucrat * OfficeBlock::getExecutor( void ) const {
+	return this->_executor;
+}
 
 void OfficeBlock::doBureaucracy( std::string formType, std::string target ) {
 	if ( !this->_intern ) {
@@ -66,14 +59,61 @@ void OfficeBlock::doBureaucracy( std::string formType, std::string target ) {
 	this->_executor->executeForm( *form );
 	delete form;
 
-};
+}
+
+/* ========== NoInternException ========== */
+
+OfficeBlock::NoInternException::NoInternException( void ) {}
+
+OfficeBlock::NoInternException::NoInternException( OfficeBlock::NoInternException const & e ) {
+	*this = e;
+}
+
+OfficeBlock::NoInternException::~NoInternException( void ) throw() {}
+
+OfficeBlock::NoInternException &    OfficeBlock::NoInternException::operator=( OfficeBlock::NoInternException const & rhs ) throw() {
+	( void )rhs;
+	return *this;
+}
 
 const char* OfficeBlock::NoInternException::what() const throw() {
 	return "Office has no intern";
-};
+}
+
+/* ========== NoSignerException ========== */
+
+OfficeBlock::NoSignerException::NoSignerException( void ) {}
+
+OfficeBlock::NoSignerException::NoSignerException( OfficeBlock::NoSignerException const & e ) {
+	*this = e;
+}
+
+OfficeBlock::NoSignerException::~NoSignerException( void ) throw() {}
+
+OfficeBlock::NoSignerException &    OfficeBlock::NoSignerException::operator=( OfficeBlock::NoSignerException const & rhs ) throw() {
+	( void )rhs;
+	return *this;
+}
+
 const char* OfficeBlock::NoSignerException::what() const throw() {
 	return "Office has no signer";
-};
+}
+
+/* ========== NoExecutorException ========== */
+
+OfficeBlock::NoExecutorException::NoExecutorException( void ) {}
+
+OfficeBlock::NoExecutorException::NoExecutorException( OfficeBlock::NoExecutorException const & e ) {
+	*this = e;
+}
+
+OfficeBlock::NoExecutorException::~NoExecutorException( void ) throw() {}
+
+OfficeBlock::NoExecutorException &    OfficeBlock::NoExecutorException::operator=( OfficeBlock::NoExecutorException const & rhs ) throw() {
+	( void )rhs;
+	return *this;
+}
+
 const char* OfficeBlock::NoExecutorException::what() const throw() {
 	return "Office has no executor";
-};
+}
