@@ -4,31 +4,26 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-#include <exception>
-#include <iostream>
-
 void tryToSign( Bureaucrat& b, Form& f) {
-	std::cout << "--- Try to Sign Form ---" << std::endl;
+	std::cout << "\n--- Try to Sign Form ---" << std::endl;
 	try {
 		b.signForm(f);
-		std::cout << "\t" << f << std::endl;
+		std::cout << f << std::endl;
 	}
 	catch ( std::exception& e ) {
-		std::cout << e.what() << std::endl;
+		std::cout << "EXCEPTION NOT CAUGHT" << std::endl;
 	}
-	std::cout << std::endl;
 }
 
 void tryToExecute( Bureaucrat& b, Form& f) {
-	std::cout << "--- Try to Execute Form ---" << std::endl;
+	std::cout << "\n--- Try to Execute Form ---" << std::endl;
 	try {
 		b.executeForm(f);
 		std::cout << f << std::endl;
 	}
 	catch ( std::exception& e ) {
-		std::cout << e.what() << std::endl;
+		std::cout << "EXCEPTION NOT CAUGHT" << std::endl;
 	}
-	std::cout << std::endl;
 }
 
 int    main ( void ) {

@@ -17,19 +17,32 @@ class Bureaucrat {
 		Bureaucrat( const std::string name, int grade );
 		Bureaucrat( Bureaucrat const & bureaucrat );
 		~Bureaucrat( void );
-
 		Bureaucrat &    operator=( Bureaucrat const & rhs );
 
-		int		getGrade( void ) const ;
+		int					getGrade( void ) const ;
 		const std::string	getName( void ) const ;
-		void	incrementGrade( void );
-		void	decrementGrade( void );
+
+		void				incrementGrade( void );
+		void				decrementGrade( void );
 
 		class GradeTooHighException : public std::exception {
-			virtual const char* what() const throw();
+			public:
+				GradeTooHighException( void );
+				GradeTooHighException( GradeTooHighException const & e );
+				virtual ~GradeTooHighException( void ) throw();
+				GradeTooHighException &    operator=( GradeTooHighException const & rhs ) throw() ;
+			private:
+				virtual const char* what() const throw();
 		};
+
 		class GradeTooLowException : public std::exception {
-			virtual const char* what() const throw();
+			public:
+				GradeTooLowException( void );
+				GradeTooLowException( GradeTooLowException const & e );
+				virtual ~GradeTooLowException( void ) throw();
+				GradeTooLowException &    operator=( GradeTooLowException const & rhs ) ;
+			private:
+				virtual const char* what() const throw();
 		};
 
 };
