@@ -4,7 +4,7 @@ CC = clang++
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRC_NAME = main.cpp
+SRC_NAME = main.cpp Base.cpp
 
 OBJ_NAME = $(SRC_NAME:.cpp=.o)
 
