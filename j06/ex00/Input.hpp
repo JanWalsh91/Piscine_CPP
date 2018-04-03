@@ -4,6 +4,7 @@
 # include <exception>
 # include <string>
 # include <iostream>
+# include <sstream>
 # include <cctype>
 # include <limits>
 
@@ -11,30 +12,33 @@ class Input {
 
 	private:
 		std::string _type;
-		void *		_input;
+		char		_char;
+		int			_int;
+		float		_float;
+		double		_double;
+		bool		_impossible;
+		Input( void );
 
 	public:
-		Input( void );
 		Input( std::string input );
 		Input( Input const & input );
 		~Input( void );
 
-		void *		getInput( void ) const;
 		std::string	getType( void ) const;
 
-		operator	char();
-		operator	int();
-		operator	float();
-		operator	double();
+		std::string getInt( void );
+		std::string getChar( void );
+		std::string getFloat( void );
+		std::string getDouble( void );
 
 		Input &    operator=( Input const & rhs );
 
-		class OverflowException : public std::exception {
+		class InvalidInputException : public std::exception {
 			public:
-				OverflowException( void );
-				OverflowException( OverflowException const & e );
-				virtual ~OverflowException( void ) throw();
-				OverflowException &    operator=( OverflowException const & rhs ) throw() ;
+				InvalidInputException( void );
+				InvalidInputException( InvalidInputException const & e );
+				virtual ~InvalidInputException( void ) throw();
+				InvalidInputException &    operator=( InvalidInputException const & rhs ) throw() ;
 				virtual const char* what() const throw();
 		};
 };
