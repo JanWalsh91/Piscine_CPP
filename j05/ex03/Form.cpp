@@ -1,7 +1,6 @@
 #include "Form.hpp"
 
-#include <string>
-#include <iostream>
+/* ========== Form ========== */
 
 Form::Form( void ) :
 	_signed(false),
@@ -11,8 +10,7 @@ Form::Form( void ) :
 	_target("Default Target") {
 	
 	std::cout << this->getName() << " created." << std::endl;
-	return ;
-};
+}
 
 Form::Form( std::string name, int minSignGrade, int minExecuteGrade, std::string target ) : 
 	_signed(false), 
@@ -29,8 +27,7 @@ Form::Form( std::string name, int minSignGrade, int minExecuteGrade, std::string
 	}
 	
 	std::cout << this->getName() << " created." << std::endl;
-	return ;
-};
+}
 
 Form::Form( Form const & form ) :
 	_signed(form.isSigned()),
@@ -40,30 +37,29 @@ Form::Form( Form const & form ) :
 	_target(form.getTarget()) {
 	std::cout << this->getName() << " copied." << std::endl;
 	*this = form;
-	return ;
-};
+}
 
 Form::~Form( void ) {
 	std::cout << this->getName() << " destroyed." << std::endl;
-	return ;
-};
+}
 
 Form &    Form::operator=( Form const & rhs ) {
+	std::cout << "FORM=" << std::endl;
 	this->_signed = rhs._signed;
 	return (*this);
-};
+}
 
 bool	Form::isSigned( void ) const {
 	return (this->_signed);
-};
+}
 
 int		Form::getMinSignGrade( void ) const {
 	return (this->_minSignGrade);
-};
+}
 
 int		Form::getMinExecuteGrade( void ) const {
 	return (this->_minExecuteGrade);
-};
+}
 
 std::string	Form::getName( void ) const  {
 	return (this->_name);
@@ -83,7 +79,7 @@ void		Form::beSigned( Bureaucrat& bureaucrat ) {
 	else {
 		this->_signed = true;
 	}
-};
+}
 
 void 	Form::execute( Bureaucrat const & executor ) const {
 	if ( !(this->isSigned()) ) {
@@ -92,30 +88,90 @@ void 	Form::execute( Bureaucrat const & executor ) const {
 	else if ( executor.getGrade() > this->getMinExecuteGrade() ) {
 		throw( Form::GradeTooLowException() );
 	}
-};
-
-const char* Form::GradeTooHighException::what() const throw() {
-	return "Grade too high";
-};
-
-const char* Form::GradeTooLowException::what() const throw() {
-	return "Grade too low";
-};
-
-const char* Form::AlreadySignedException::what() const throw() {
-	return "Form already signed";
-};
-
-const char* Form::NotSignedException::what() const throw() {
-	return "Form not signed";
-};
+}
 
 std::ostream& operator<<( std::ostream& os, const Form & form ) {
 	os
-		<< "Form name: " << form.getName() << ",\t"
-		<< "Signed status: " << (form.isSigned() ? "" : "not ") << "signed" << ",\t"
-		<< "Min Grade to Sign:  " << form.getMinSignGrade() << ",\t"
-		<< "Min Grade to Excecute:  " << form.getMinExecuteGrade() << ",\t"
-		<< "Target: " << form.getTarget();
-    return os;
+		<< "(s.grade " << form.getMinSignGrade()
+		<< ", ex.grade " << form.getMinExecuteGrade()
+		<< ") "
+		<< "targeted on " << form.getTarget()
+		<< (form.isSigned() ? " (Signed)" : " (Unsigned)");
+		return os;
+}
+
+/* ========== GradeTooHighException ========== */
+
+Form::GradeTooHighException::GradeTooHighException( void ) {}
+
+Form::GradeTooHighException::GradeTooHighException( Form::GradeTooHighException const & e ) {
+	*this = e;
+}
+
+Form::GradeTooHighException::~GradeTooHighException( void ) throw() {}
+
+Form::GradeTooHighException &    Form::GradeTooHighException::operator=( Form::GradeTooHighException const & rhs ) throw() {
+	( void )rhs;
+	return *this;
+}
+
+const char* Form::GradeTooHighException::what() const throw() {
+	return "Grade too high";
+}
+
+/* ========== GradeTooLowException ========== */
+
+Form::GradeTooLowException::GradeTooLowException( void ) {}
+
+Form::GradeTooLowException::GradeTooLowException( Form::GradeTooLowException const & e ) {
+	*this = e;
+}
+
+Form::GradeTooLowException::~GradeTooLowException( void ) throw() {}
+
+Form::GradeTooLowException &    Form::GradeTooLowException::operator=( Form::GradeTooLowException const & rhs ) {
+	( void )rhs;
+	return *this;
+}
+
+const char* Form::GradeTooLowException::what() const throw() {
+	return "Grade too low";
+}
+
+/* ========== AlreadySignedException ========== */
+
+Form::AlreadySignedException::AlreadySignedException( void ) {}
+
+Form::AlreadySignedException::AlreadySignedException( Form::AlreadySignedException const & e ) {
+	*this = e;
+}
+
+Form::AlreadySignedException::~AlreadySignedException( void ) throw() {}
+
+Form::AlreadySignedException &    Form::AlreadySignedException::operator=( Form::AlreadySignedException const & rhs ) {
+	( void )rhs;
+	return *this;
+}
+
+const char* Form::AlreadySignedException::what() const throw() {
+	return "Form already signed";
+}
+
+/* ========== NotSignedException ========== */
+
+Form::NotSignedException::NotSignedException( void ) {}
+
+Form::NotSignedException::NotSignedException( Form::NotSignedException const & e ) {
+	*this = e;
+}
+
+Form::NotSignedException::~NotSignedException( void ) throw() {}
+
+Form::NotSignedException &    Form::NotSignedException::operator=( Form::NotSignedException const & rhs ) {
+	( void )rhs;
+	return *this;
+}
+
+const char* Form::NotSignedException::what() const throw() {
+	return "Form not signed";
 }

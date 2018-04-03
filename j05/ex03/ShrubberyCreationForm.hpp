@@ -3,14 +3,14 @@
 
 # include "Form.hpp"
 
-# include <string>
-
 class ShrubberyCreationForm : public Form {
 
 	public:
 		ShrubberyCreationForm( void );
 		ShrubberyCreationForm( std::string target );
 		void	execute( Bureaucrat const & executor ) const;
+
+		ShrubberyCreationForm &    operator=( ShrubberyCreationForm const & rhs );
 };
 
 #endif

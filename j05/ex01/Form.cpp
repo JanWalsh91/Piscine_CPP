@@ -75,11 +75,12 @@ void		Form::beSigned( Bureaucrat& bureaucrat ) {
 
 std::ostream& operator<<( std::ostream& os, const Form & form ) {
 	os
-		<< "Form name: " << form.getName() << ",\t"
-		<< "Signed status: " << (form.isSigned() ? "" : "not ") << "signed" << ",\t"
-		<< "Min Grade to Sign:  " << form.getMinSignGrade() << ",\t"
-		<< "Min Grade to Excecute:  " << form.getMinExecuteGrade();
-    return os;
+		<< "(s.grade " << form.getMinSignGrade()
+		<< ", ex.grade " << form.getMinExecuteGrade()
+		<< ") "
+		<< "targeted on " << form.getTarget()
+		<< (form.isSigned() ? " (Signed)" : " (Unsigned)");
+		return os;
 }
 
 /* ========== GradeTooHighException ========== */
