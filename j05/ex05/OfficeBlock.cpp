@@ -44,6 +44,7 @@ const Bureaucrat * OfficeBlock::getExecutor( void ) const {
 void OfficeBlock::doBureaucracy( std::string formType, std::string target ) {
 	if ( !this->_intern ) {
 		throw( OfficeBlock::NoInternException() );
+		return ;
 	}
 	if ( !this->_signer ) {
 		throw( OfficeBlock::NoSignerException() );
@@ -58,7 +59,6 @@ void OfficeBlock::doBureaucracy( std::string formType, std::string target ) {
 	this->_signer->signForm( *form );
 	this->_executor->executeForm( *form );
 	delete form;
-
 }
 
 /* ========== NoInternException ========== */

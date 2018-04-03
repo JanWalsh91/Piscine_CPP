@@ -5,6 +5,7 @@
 
 # include <string>
 # include <iostream>
+# include <sstream>
 # include <exception>
 
 class Bureaucrat;
@@ -44,8 +45,13 @@ class Form {
 		};
 
 		class GradeTooLowException : public std::exception {
+			private:
+				std::string		_bureaucrat;
+				std::string		_form;
+				std::string		_action;
 			public:
 				GradeTooLowException( void );
+				GradeTooLowException( std::string b, std::string f, std::string a );
 				GradeTooLowException( GradeTooLowException const & e );
 				virtual ~GradeTooLowException( void ) throw();
 				GradeTooLowException &    operator=( GradeTooLowException const & rhs ) ;

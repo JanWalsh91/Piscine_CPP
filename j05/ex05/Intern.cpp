@@ -4,18 +4,13 @@
 
 /* ========== Intern ========== */
 
-Intern::Intern( void ) {
-	// std::cout << "Anonymous intern created" << std::endl;
-}
+Intern::Intern( void ) {}
 
 Intern::Intern( Intern const & intern ) {
-	// std::cout << "Useless Intern copied" << std::endl;
 	*this = intern;
 }
 
-Intern::~Intern( void ) {
-	// std::cout << "Intern finished his internship" << std::endl;
-}
+Intern::~Intern( void ) {}
 
 Intern &    Intern::operator=( Intern const & rhs ) {
 	( void )rhs;
@@ -50,9 +45,9 @@ Form *	Intern::makeShrubberyCreationForm( std::string target ) {
 	return new ShrubberyCreationForm(target);
 }
 const Intern::formGetter Intern::getForm[3] = {
-	&(Intern::makePresidentialPardonForm),
+	&(Intern::makeShrubberyCreationForm),
 	&(Intern::makeRobotomyRequestForm),
-	&(Intern::makeShrubberyCreationForm)
+	&(Intern::makePresidentialPardonForm)
 };
 
 /* ========== FormTypeUnknownException ========== */

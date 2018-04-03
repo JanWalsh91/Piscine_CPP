@@ -54,7 +54,6 @@ CentralBureaucracy &    CentralBureaucracy::operator=( CentralBureaucracy const 
 		}
 	}
 	// *this->_officeBlocks = rhs._officeBlocks; // NO ASSIGNATION FOR OFFICE BLOCKS
-	( void )rhs;
 	return (*this);
 }
 
@@ -88,18 +87,15 @@ void CentralBureaucracy::queueUp( std::string target ) {
 	TargetList* ptr = this->_targetList;
 	if ( ptr == NULL ) {
 		this->_targetList = link;
-		// std::cout << "first link" << std::endl;
 		return ;
 	}
 	while ( ptr->next ) {
-		// std::cout << "looping through links: " << std::endl;
 		ptr = ptr->next;
 	}
 	ptr->next = link;
 }
 
 void CentralBureaucracy::doBureaucracy( void ) {
-	// std::cout << "doBureaucracy" << std::endl;
 	std::srand(std::time(nullptr));
 	std::string bitsOfBureaucracy[] = {"shrubbery creation", "robotomy request", "presidential pardon"};
 
@@ -122,9 +118,6 @@ void CentralBureaucracy::doBureaucracy( void ) {
 		ptr = ptr->next;
 	}
 }
-
-
-
 
 
 
