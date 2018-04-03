@@ -92,7 +92,8 @@ void 	Form::execute( Bureaucrat const & executor ) const {
 
 std::ostream& operator<<( std::ostream& os, const Form & form ) {
 	os
-		<< "(s.grade " << form.getMinSignGrade()
+		<< form.getName()
+		<< " (s.grade " << form.getMinSignGrade()
 		<< ", ex.grade " << form.getMinExecuteGrade()
 		<< ") "
 		<< "targeted on " << form.getTarget()
