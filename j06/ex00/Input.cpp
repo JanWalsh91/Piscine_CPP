@@ -177,7 +177,6 @@ std::string Input::getChar( void ) {
 std::string Input::getFloat( void ) {
 	std::ostringstream convert;
 	convert << std::fixed;
-	convert.precision(1);
 	if ( this->_type == "float" ) {
 		convert << this->_float;
 	}
@@ -188,11 +187,16 @@ std::string Input::getFloat( void ) {
 		convert << static_cast<float>(this->_int);
 	}
 	if ( this->_type == "double" ) {
-		if ( this->_double < std::numeric_limits<float>::min() ||
+		if ( this->_impossible ) {
+			convert << static_cast<float>(this->_double); 
+		}
+		else if ( this->_double < std::numeric_limits<float>::min() ||
 			this->_double > std::numeric_limits<float>::max() ) {
 				return "impossible";
 		}
-		convert << static_cast<float>(this->_double);
+		else {
+			convert << static_cast<float>(this->_double);
+		}
 	}
 	convert << "f";
 	return convert.str();
@@ -201,7 +205,6 @@ std::string Input::getFloat( void ) {
 std::string Input::getDouble( void ) {
 	std::ostringstream convert;
 	convert << std::fixed;
-	convert.precision(1);
 	if ( this->_type == "double" ) {
 		convert << this->_double;
 	}
