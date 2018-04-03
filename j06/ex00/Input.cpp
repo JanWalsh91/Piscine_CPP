@@ -2,13 +2,11 @@
 
 #include <iostream>
 
-Input::Input( void ) : _input( NULL ) {
-	
-	return ;
-};
+Input::Input( void ) : _input( NULL ) {}
 
 Input::Input( std::string input ) {
 	// check if int
+	std::cout << "Check if int" << std::endl;
 	try {
 		int *i = new int( std::stoi( input ) );
 		
@@ -21,9 +19,10 @@ Input::Input( std::string input ) {
 	}
 	catch ( std::exception &e ) {
 		std::cout << e.what() << std::endl;
-	};
+	}
 	
 	// check if char
+	std::cout << "Check if char" << std::endl;
 	if ( input.length() == 1 ) {
 		std::cout << "char " << std::endl;
 		char *c = new char( static_cast<char>( input[0] ) );
@@ -32,6 +31,7 @@ Input::Input( std::string input ) {
 		return ;
 	}
 	// check if float (has 'f')
+	std::cout << "Check if float" << std::endl;
 	if ( input[input.length() - 1] == 'f' || 
 		input == "-inff" ||
 		input == "+inff" ||
@@ -45,32 +45,33 @@ Input::Input( std::string input ) {
 		}
 		catch ( std::exception &e ) {
 			std::cout << e.what() << std::endl;
-		};
+		}
 	}
 	// check if double
+	std::cout << "Check if double" << std::endl;
 	if ( std::isdigit(input[input.length() - 1]) || 
 		input == "-inf" ||
 		input == "+inf" ||
 		input == "nan") {
 		try {
 			double *d = new double( std::stod( input ) );
-			std::cout << std::to_string( *d ) << std::endl;
+			// std::cout << std::to_string( *d ) << std::endl;
 			this->_type = "double";
 			this->_input = reinterpret_cast<void *>( d );
 			return ;
 		}
 		catch ( std::exception &e ) {
 			std::cout << e.what() << std::endl;
-		};
+		}
 	}
 	return ;
 	// throw invalid expression
-};
+}
 
 Input::Input( Input const & input ) {
 	*this = input;
 	return ;
-};
+}
 
 Input::~Input( void ) {
 	if ( this->_type == "int") {
@@ -90,16 +91,17 @@ Input::~Input( void ) {
 		delete reinterpret_cast<double *>(this->_input);
 	}
 	return ;
-};
+}
 
 void *	Input::getInput( void ) const {
-	// std::cout << "getInput: " << this->_input << std::endl;
 	return this->_input;
-};
+}
 
 std::string	Input::getType( void ) const {
 	return this->_type;
-};
+}
+
+/* ========== Cast Char ========== */
 
 Input::operator char( void ) {
 	if ( this->getType() == "char") {
@@ -133,7 +135,9 @@ Input::operator char( void ) {
 		return c;
 	}
 	return '0';
-};
+}
+
+/* ========== Cast Int ========== */
 
 Input::operator int( void ) {
 	if ( this->getType() == "char") {
@@ -160,7 +164,9 @@ Input::operator int( void ) {
 		return d;
 	}
 	return 0;
-};
+}
+
+/* ========== Cast Float ========== */
 
 Input::operator float( void ) {
 	if ( this->getType() == "char") {
@@ -174,20 +180,23 @@ Input::operator float( void ) {
 		return *( static_cast<float *>( this->getInput()) );
 	}
 	if ( this->getType() == "double") {
-		double d = *static_cast<double *>( this->getInput());
-		std::cout << std::fixed;
-		std::cout << "------double: " << d << std::endl;
-		std::cout << std::numeric_limits<float>::max() << std::endl;
-		std::cout << (d > std::numeric_limits<float>::max()) << std::endl;
+		// double d = static_cast<float>(*static_cast<double *>( this->getInput()));
+		double d = (*static_cast<double *>( this->getInput()));
+		// std::cout << std::fixed;
+		// std::cout << "------double: " << d << std::endl;
+		// std::cout << std::numeric_limits<float>::max() << std::endl;
+		// std::cout << (d > std::numeric_limits<float>::max()) << std::endl;
 
 		if ( d < std::numeric_limits<float>::min() ||
 			d > std::numeric_limits<float>::max() ) {
 			throw( Input::OverflowException() );
-		}	
+		}
 		return d;
 	}
 	return 0.0f;
-};
+}
+
+/* ========== Cast Double ========== */
 
 Input::operator double( void ) {
 	if ( this->getType() == "char") {
@@ -204,32 +213,48 @@ Input::operator double( void ) {
 		return *( static_cast<double *>( this->getInput()) );
 	}
 	return 0.0f;
-};
+}
 
-const char* Input::OverflowException::what() const throw() {
-	return "impossible";
-};
 
 Input &    Input::operator=( Input const & rhs ) {
 	this->_input = rhs._input;
 	return (*this);
-};
+}
 
 std::ostream& operator<<(std::ostream & os, const Input & input) {
 	if ( input.getType() == "int" ) {
 		os << *( reinterpret_cast<int *>( input.getInput() ) );
 	}
 	else if ( input.getType() == "char" ) {
-		std::cout << "char: ";
+		// std::cout << "char: ";
 		os << *( reinterpret_cast<char *>( input.getInput()  ));
 	}
 	else if ( input.getType() == "float" ) {
-		std::cout << "float: ";
+		// std::cout << "float: ";
 		os << *( reinterpret_cast<float *>( input.getInput() ) );
 	}
 	else if ( input.getType() == "double" ) {
-		std::cout << "double: ";
+		// std::cout << "double: ";
 		os << *( reinterpret_cast<double *>( input.getInput( )) );
 	}
 	return os;
-};
+}
+
+/* ========== OverflowException ========== */
+
+Input::OverflowException::OverflowException( void ) {}
+
+Input::OverflowException::OverflowException( Input::OverflowException const & e ) {
+	*this = e;
+}
+
+Input::OverflowException::~OverflowException( void ) throw() {}
+
+Input::OverflowException &    Input::OverflowException::operator=( Input::OverflowException const & rhs ) throw() {
+	( void )rhs;
+	return *this;
+}
+
+const char* Input::OverflowException::what() const throw() {
+	return "impossible";
+}

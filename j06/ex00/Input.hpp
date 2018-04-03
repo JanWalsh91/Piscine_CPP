@@ -30,7 +30,12 @@ class Input {
 		Input &    operator=( Input const & rhs );
 
 		class OverflowException : public std::exception {
-			virtual const char* what() const throw();
+			public:
+				OverflowException( void );
+				OverflowException( OverflowException const & e );
+				virtual ~OverflowException( void ) throw();
+				OverflowException &    operator=( OverflowException const & rhs ) throw() ;
+				virtual const char* what() const throw();
 		};
 };
 

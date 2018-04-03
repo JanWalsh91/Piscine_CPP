@@ -5,6 +5,7 @@
 #include <exception>
 
 int    main ( int ac, char** av ) {
+
 	if ( ac != 2 ) {
 		std::cout << "Please execute with one parameter." << std::endl;
 		return (0);
@@ -44,13 +45,11 @@ int    main ( int ac, char** av ) {
 		f = static_cast<float>(*input);
 		std::cout << std::fixed;
 		std::cout.precision(1);
-		std::cout.precision(1);
-		std::cout << "float: " << f << 'f' << std::endl;
+		std::cout << f << 'f' << std::endl;
 	}
 	catch ( std::exception &e ) {
 		std::cout << e.what() << std::endl;
 	} 
-
 
 	double d = static_cast<double>(*input);
 	std::cout << "double: " << d << std::endl;
