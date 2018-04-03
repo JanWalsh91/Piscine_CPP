@@ -24,18 +24,12 @@ class Input {
 		Input( Input const & input );
 		~Input( void );
 
-		// void *		getInput( void ) const;
 		std::string	getType( void ) const;
 
 		std::string getInt( void );
 		std::string getChar( void );
 		std::string getFloat( void );
 		std::string getDouble( void );
-
-		// operator	char();
-		// operator	int();
-		// operator	float();
-		// operator	double();
 
 		Input &    operator=( Input const & rhs );
 

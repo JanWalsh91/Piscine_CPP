@@ -7,7 +7,7 @@
 int    main ( int ac, char** av ) {
 
 	if ( ac != 2 ) {
-		std::cout << "Please execute with one parameter." << std::endl;
+		std::cout << "Please execute me with one parameter." << std::endl;
 		return (0);
 	}
 
