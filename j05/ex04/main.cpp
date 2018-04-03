@@ -20,10 +20,15 @@ void tryToDoBureaucracy( OfficeBlock & o, std::string type, std::string target )
 	}
 	catch (OfficeBlock::NoExecutorException & e) {
 		std::cout << e.what() << std::endl;
-		std::cout << "Suggestion: get another bureaucrat to execute shitty forms!" << std::endl;
+		std::cout << "Suggestion: get another bureaucrat to do shitty things!" << std::endl;
+	}
+	catch (Form::GradeTooLowException & e) {
+		std::cout << e.what() << std::endl;
+		std::cout << "Suggestion: get some smarter bucreaucrats" << std::endl;
 	}
 	catch (std::exception & e) {
 		std::cout << e.what() << std::endl;
+		std::cout << "Suggestion: do something smart about this" << std::endl;
 	}
 }
 
@@ -63,6 +68,12 @@ int    main ( void ) {
 	ob3.setSigner(ceo);
 	tryToDoBureaucracy(ob3, "shrubbery creation", "Home");
 
+	std::cout << "<< ======= ob4 ====== >>" << std::endl;
+	OfficeBlock ob4;
+	ob4.setIntern(idiotOne);
+	ob4.setSigner(middle);
+	ob4.setExecutor(clerk);
+	tryToDoBureaucracy(ob4, "shrubbery creation", "Home");
 
 	std::cout << "<< ================== >>" << std::endl;
 	return (0);

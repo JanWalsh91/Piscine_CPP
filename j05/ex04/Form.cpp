@@ -9,7 +9,6 @@ Form::Form( void ) :
 	_name("Default Form"),
 	_target("Default Target") {
 	
-	// std::cout << this->getName() << " created." << std::endl;
 }
 
 Form::Form( std::string name, int minSignGrade, int minExecuteGrade, std::string target ) : 
@@ -25,8 +24,6 @@ Form::Form( std::string name, int minSignGrade, int minExecuteGrade, std::string
 	else if ( this->_minSignGrade > 150 || this->_minExecuteGrade > 150 ) {
 		throw (Form::GradeTooLowException());
 	}
-	
-	// std::cout << this->getName() << " created." << std::endl;
 }
 
 Form::Form( Form const & form ) :
@@ -35,7 +32,6 @@ Form::Form( Form const & form ) :
 	_minExecuteGrade(form.getMinExecuteGrade()),
 	_name(form.getName()),
 	_target(form.getTarget()) {
-	// std::cout << this->getName() << " copied." << std::endl;
 	*this = form;
 }
 
@@ -44,7 +40,6 @@ Form::~Form( void ) {
 }
 
 Form &    Form::operator=( Form const & rhs ) {
-	std::cout << "FORM=" << std::endl;
 	this->_signed = rhs._signed;
 	return (*this);
 }
@@ -74,7 +69,11 @@ void		Form::beSigned( Bureaucrat& bureaucrat ) {
 		throw( Form::AlreadySignedException() );
 	}
 	else if ( bureaucrat.getGrade() > this->getMinSignGrade() ) {
-		throw( Form::GradeTooLowException() );
+		std::stringstream b;
+		b << bureaucrat;
+		std::stringstream f;
+		f << *this;
+		throw( Form::GradeTooLowException( b.str(), f.str(), "sign" ));
 	}
 	else {
 		this->_signed = true;
@@ -86,13 +85,18 @@ void 	Form::execute( Bureaucrat const & executor ) const {
 		throw( Form::NotSignedException() );
 	}
 	else if ( executor.getGrade() > this->getMinExecuteGrade() ) {
-		throw( Form::GradeTooLowException() );
+		std::stringstream b;
+		b << executor;
+		std::stringstream f;
+		f << *this;
+		throw( Form::GradeTooLowException( b.str(), f.str(), "execute" ));
 	}
 }
 
 std::ostream& operator<<( std::ostream& os, const Form & form ) {
 	os
-		<< "(s.grade " << form.getMinSignGrade()
+		<<	form.getName()
+		<< " (s.grade " << form.getMinSignGrade()
 		<< ", ex.grade " << form.getMinExecuteGrade()
 		<< ") "
 		<< "targeted on " << form.getTarget()
@@ -121,7 +125,9 @@ const char* Form::GradeTooHighException::what() const throw() {
 
 /* ========== GradeTooLowException ========== */
 
-Form::GradeTooLowException::GradeTooLowException( void ) {}
+Form::GradeTooLowException::GradeTooLowException( void ) : _bureaucrat(""), _form(""), _action("") {}
+
+Form::GradeTooLowException::GradeTooLowException( std::string b, std::string f , std::string a ) : _bureaucrat( b ), _form( f ), _action( a ) {}
 
 Form::GradeTooLowException::GradeTooLowException( Form::GradeTooLowException const & e ) {
 	*this = e;
@@ -130,11 +136,17 @@ Form::GradeTooLowException::GradeTooLowException( Form::GradeTooLowException con
 Form::GradeTooLowException::~GradeTooLowException( void ) throw() {}
 
 Form::GradeTooLowException &    Form::GradeTooLowException::operator=( Form::GradeTooLowException const & rhs ) {
-	( void )rhs;
+	this->_bureaucrat = rhs._bureaucrat;
+	this->_form = rhs._form;
+	this->_action = rhs._action;
 	return *this;
 }
 
 const char* Form::GradeTooLowException::what() const throw() {
+	if ( this->_bureaucrat != "" && this->_form != "" && this->_action != "" ) {
+		std::string s = this->_bureaucrat + " cannot " + this->_action + " " + this->_form + " because his grade is too low.";
+		return s.c_str();
+	}
 	return "Grade too low";
 }
 

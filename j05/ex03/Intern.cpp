@@ -48,9 +48,9 @@ Form *	Intern::makeShrubberyCreationForm( std::string target ) {
 	return new ShrubberyCreationForm(target);
 }
 const Intern::formGetter Intern::getForm[3] = {
-	&(Intern::makePresidentialPardonForm),
+	&(Intern::makeShrubberyCreationForm),
 	&(Intern::makeRobotomyRequestForm),
-	&(Intern::makeShrubberyCreationForm)
+	&(Intern::makePresidentialPardonForm)
 };
 
 /* ========== FormTypeUnknownException ========== */

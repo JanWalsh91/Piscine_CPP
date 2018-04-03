@@ -3,12 +3,12 @@
 /* ========== RobotomyRequestForm ========== */
 
 RobotomyRequestForm::RobotomyRequestForm( void ) :
-	Form("Robotomy Request Form", 145, 137, "Default Target") {
+	Form("Robotomy Request Form", 72, 45, "Default Target") {
 	this->_initRand();
 }
 
 RobotomyRequestForm::RobotomyRequestForm( std::string target ) :
-	Form("Robotomy Request Form", 145, 137, target) {
+	Form("Robotomy Request Form", 72, 45, target) {
 	this->_initRand();
 }
 

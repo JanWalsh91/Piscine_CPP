@@ -3,11 +3,11 @@
 /* ========== PresidentialPardonForm ========== */
 
 PresidentialPardonForm::PresidentialPardonForm( void ) :
-	Form("Presidential Pardon Form", 145, 137, "Default Target") {
+	Form("Presidential Pardon Form", 25, 5, "Default Target") {
 }
 
 PresidentialPardonForm::PresidentialPardonForm( std::string target ) :
-	Form("Presidential Pardon Form", 145, 137, target) {
+	Form("Presidential Pardon Form", 25, 5, target) {
 }
 
 void	PresidentialPardonForm::execute( Bureaucrat const & executor ) const {

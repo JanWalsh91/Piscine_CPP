@@ -2,26 +2,20 @@
 
 /* ========== Bureaucrat ========== */
 
-Bureaucrat::Bureaucrat( void ) : _grade(150), _name("Bureaucrat") {
-	// std::cout << this->getName() << " created." << std::endl;
-}
+Bureaucrat::Bureaucrat( void ) : _grade(150), _name("Bureaucrat") {}
 
 Bureaucrat::Bureaucrat( const std::string name, int grade ) : _name(name) {
 	this->_updateGrade( grade );
-	// std::cout << this->getName() << " created." << std::endl;
 }
 
 Bureaucrat::Bureaucrat( Bureaucrat const & bureaucrat ) :
 	_grade(bureaucrat.getGrade()),
 	_name(bureaucrat.getName()) {
 
-	// std::cout << this->getName() << " copied." << std::endl;
 	*this = bureaucrat;
 }
 
-Bureaucrat::~Bureaucrat( void ) {
-	// std::cout << this->getName() << " destroyed." << std::endl;
-}
+Bureaucrat::~Bureaucrat( void ) {}
 
 Bureaucrat &    Bureaucrat::operator=( Bureaucrat const & rhs ) {
 	this->_grade = rhs._grade;
@@ -57,27 +51,13 @@ void	Bureaucrat::decrementGrade( void ) {
 }
 
 void	Bureaucrat::signForm( Form& form ) {
-	try {
-		form.beSigned( *this );
-		std::cout << *this << " signs " << form << std::endl;
-	}
-	catch ( std::exception& e ) {
-		std::cout
-			<< *this << " cannot sign " << form
-			<< " because " << e.what() << std::endl;
-	}
+	form.beSigned( *this );
+	std::cout << *this << " signs " << form << std::endl;
 }
 
 void	Bureaucrat::executeForm( Form& form ) {
-	try {
-		form.execute( *this );
-		std::cout << *this << " executes " << form << std::endl;
-	}
-	catch ( std::exception& e ) {
-		std::cout
-			<< *this << " cannot execute " << form
-			<< " because " << e.what() << std::endl;
-	}
+	form.execute( *this );
+	std::cout << *this << " executes " << form << std::endl;
 }
 
 std::ostream& operator<<( std::ostream& os, const Bureaucrat & bureaucrat ) {
