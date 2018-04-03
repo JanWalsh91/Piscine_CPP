@@ -4,7 +4,7 @@
 
 Input::Input( void ) {}
 
-Input::Input( std::string input ) : _type(""), _char(' '), _int(0), _float(0.0), _double(0.0), _impossible(false) {
+Input::Input( std::string input ) : _type(""), _char(' '), _int(0), _float(0.0), _double(0.0), _impossible(false), _precision(0) {
 	if (input == "-inf" ||
 		input == "+inf" ||
 		input == "inf" ||
@@ -15,6 +15,16 @@ Input::Input( std::string input ) : _type(""), _char(' '), _int(0), _float(0.0),
 		input == "nanf") {
 		this->_impossible = true;
 	}
+	
+	if ( input.length() > 1 && input.find('.') ) {
+		std::string substr = input.substr(input.find("."));
+		std::cout << substr << std::endl;
+		this->_precision = substr.length() - 1;
+		if ( this->_precision == 0 ) {
+			this->_precision = 1;
+		}
+	}
+
 	// check if int
 	this->_type = "";
 	try {
@@ -85,25 +95,6 @@ Input &    Input::operator=( Input const & rhs ) {
 	this->_double = rhs._double;
 	this->_impossible = rhs._impossible;
 	return (*this);
-}
-
-/* ========== InvalidInputException ========== */
-
-Input::InvalidInputException::InvalidInputException( void ) {}
-
-Input::InvalidInputException::InvalidInputException( Input::InvalidInputException const & e ) {
-	*this = e;
-}
-
-Input::InvalidInputException::~InvalidInputException( void ) throw() {}
-
-Input::InvalidInputException &    Input::InvalidInputException::operator=( Input::InvalidInputException const & rhs ) throw() {
-	( void )rhs;
-	return *this;
-}
-
-const char* Input::InvalidInputException::what() const throw() {
-	return "Invalid input";
 }
 
 std::string Input::getInt( void ) {
@@ -177,6 +168,11 @@ std::string Input::getChar( void ) {
 std::string Input::getFloat( void ) {
 	std::ostringstream convert;
 	convert << std::fixed;
+	if ( this->_precision ) {
+		convert.precision(this->_precision);
+	} else {
+		convert.precision(1);
+	}
 	if ( this->_type == "float" ) {
 		convert << this->_float;
 	}
@@ -205,6 +201,11 @@ std::string Input::getFloat( void ) {
 std::string Input::getDouble( void ) {
 	std::ostringstream convert;
 	convert << std::fixed;
+	if ( this->_precision ) {
+		convert.precision(this->_precision);
+	} else {
+		convert.precision(1);
+	}
 	if ( this->_type == "double" ) {
 		convert << this->_double;
 	}
@@ -218,4 +219,23 @@ std::string Input::getDouble( void ) {
 		convert << static_cast<double>(this->_float);
 	}
 	return convert.str();
+}
+
+/* ========== InvalidInputException ========== */
+
+Input::InvalidInputException::InvalidInputException( void ) {}
+
+Input::InvalidInputException::InvalidInputException( Input::InvalidInputException const & e ) {
+	*this = e;
+}
+
+Input::InvalidInputException::~InvalidInputException( void ) throw() {}
+
+Input::InvalidInputException &    Input::InvalidInputException::operator=( Input::InvalidInputException const & rhs ) throw() {
+	( void )rhs;
+	return *this;
+}
+
+const char* Input::InvalidInputException::what() const throw() {
+	return "Invalid input";
 }
