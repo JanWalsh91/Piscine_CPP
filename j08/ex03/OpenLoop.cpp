@@ -1,7 +1,6 @@
 #include "OpenLoop.hpp"
 
 OpenLoop::OpenLoop( void ) {
-	// std::cout << "OpenLoop created" << std::endl;
 }
 
 OpenLoop::OpenLoop( OpenLoop const & OpenLoop ) {
@@ -20,10 +19,8 @@ void OpenLoop::execute( std::vector<Instruction *> & instructions, std::vector<I
 	( void )chars;
 	( void )cPtr;
 	if ( !*cPtr ) {
-		// std::cout << "execute open loop" << std::endl;
 		iPtr = this->getMatch();
 	}
-	// std::cout << "skip open loop" << std::endl;
 	Instruction::execute( instructions, ++iPtr, chars, cPtr );
 }
 

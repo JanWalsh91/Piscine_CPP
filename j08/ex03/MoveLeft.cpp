@@ -1,7 +1,6 @@
 #include "MoveLeft.hpp"
 
 MoveLeft::MoveLeft( void ) {
-	// std::cout << "MoveLeft created" << std::endl;
 }
 
 MoveLeft::MoveLeft( MoveLeft const & MoveLeft ) {
@@ -20,7 +19,6 @@ void MoveLeft::execute( std::vector<Instruction *> & instructions, std::vector<I
 	( void )chars;
 	( void )cPtr;
 	if ( cPtr != chars.begin() ) {
-		// std::cout << "execute move left" << std::endl;
 		Instruction::execute( instructions, ++iPtr, chars, --cPtr );
 	}
 }

@@ -1,7 +1,6 @@
 #include "Decrement.hpp"
 
 Decrement::Decrement( void ) {
-	// std::cout << "Decrement created" << std::endl;
 }
 
 Decrement::Decrement( Decrement const & Decrement ) {
@@ -19,6 +18,5 @@ void Decrement::execute( std::vector<Instruction *> & instructions, std::vector<
 	( void )iPtr;
 	( void )chars;
 	--(*cPtr);
-	// std::cout << "execute decrement" << std::endl;
 	Instruction::execute( instructions, ++iPtr, chars, cPtr );
 }

@@ -2,7 +2,6 @@
 #include <iostream>
 
 GetInput::GetInput( void ) {
-	// std::cout << "GetInput created" << std::endl;
 }
 
 GetInput::GetInput( GetInput const & GetInput ) {
@@ -20,7 +19,6 @@ void GetInput::execute( std::vector<Instruction *> & instructions, std::vector<I
 	( void )iPtr;
 	( void )chars;
 	( void )cPtr;
-	// std::cout << "Enter a character: ";
 	std::cin >> *cPtr;
 	Instruction::execute( instructions, ++iPtr, chars, cPtr );
 }

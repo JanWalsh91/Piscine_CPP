@@ -1,7 +1,6 @@
 #include "CloseLoop.hpp"
 
 CloseLoop::CloseLoop( void ) {
-	// std::cout << "CloseLoop created" << std::endl;
 }
 
 CloseLoop::CloseLoop( CloseLoop const & CloseLoop ) {
@@ -20,10 +19,8 @@ void CloseLoop::execute( std::vector<Instruction *> & instructions, std::vector<
 	( void )chars;
 	( void )cPtr;
 	if ( *cPtr ) {
-		// std::cout << "execute close loop" << std::endl;
 		iPtr = this->getMatch();
 	}
-	// std::cout << "skip close loop" << std::endl;
 	Instruction::execute( instructions, ++iPtr, chars, cPtr );
 }
 

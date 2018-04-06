@@ -3,7 +3,6 @@
 MindOpen::MindOpen( void ) {}
 
 MindOpen::MindOpen( std::string file ) : file(file), bracketDepth(0) {
-	// std::cout << "MindOpen construction: file: " << file << std::endl;
 }
 
 MindOpen::MindOpen( MindOpen const & MindOpen ) {
@@ -30,9 +29,6 @@ void MindOpen::readFile( void ) {
 			if (this->availableInstructions.find(c) != std::string::npos) {
 				this->instructions.push_back( this->makeInstruction( c ) );
 			}
-			else {
-				// std::cout << "skip" << std::endl;
-			}
 		}
 	}
 	else {
@@ -45,16 +41,10 @@ void MindOpen::readFile( void ) {
 }
 
 void MindOpen::executeProgram( void ) {
-	// std::cout << "execute" << std::endl;
-	// this->chars.push_back(98);
-	// this->cPtr++;
-	// std::cout << *cPtr << std::endl;
-	// exit(0);
 	(*(this->iPtr))->execute( this->instructions, this->iPtr, this->chars, this->cPtr );
 }
 
 Instruction*	MindOpen::makeInstruction( char c ) {
-	// std::cout << "Make Instruction" << std::endl;
 	
 	for ( int i = 0; i < 8 ; ++i ) {
 		if ( c == this->availableInstructions[i] ) {
@@ -62,14 +52,11 @@ Instruction*	MindOpen::makeInstruction( char c ) {
 			OpenLoop * open = dynamic_cast<OpenLoop *>(newInstruction);
 			if ( open ) {
 				open->setMatchIndex( ++(this->bracketDepth) );
-				// std::cout << "Found Open. Index: " << this->bracketDepth << std::endl;
 			}
 			CloseLoop * close = dynamic_cast<CloseLoop *>(newInstruction);
 			if ( close ) {
 				close->setMatchIndex( (this->bracketDepth)-- );
-				// std::cout << "Found Close. Index: " << this->bracketDepth << std::endl;
 			}
-			// std::cout << "Created " << c << std::endl;
 			return newInstruction;
 		}
 	}
@@ -77,17 +64,14 @@ Instruction*	MindOpen::makeInstruction( char c ) {
 }
 
 void			MindOpen::matchBrackets( void ) {
-	// loop through until you find a Open Bracket
 	bool valid = true;
 	for (std::vector<Instruction *>::iterator it = this->instructions.begin(); it != this->instructions.end(); ++it) {
 		OpenLoop * open = dynamic_cast<OpenLoop *>( *it );
 		if ( open ) {
 			valid = false;
-			// std::cout << "Found Open " << std::endl;
 			for (std::vector<Instruction *>::iterator it2 = it; it2 != this->instructions.end(); ++it2) {
 				CloseLoop * close = dynamic_cast<CloseLoop *>( *it2 );
 				if ( close && open->getMatchIndex() == close->getMatchIndex() ) {
-					// std::cout << "Found Close " << std::endl;
 					open->setMatch( it2 );
 					close->setMatch( it );
 					valid = true;

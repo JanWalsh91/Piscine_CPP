@@ -1,7 +1,6 @@
 #include "Increment.hpp"
 
 Increment::Increment( void ) {
-	// std::cout << "Increment created" << std::endl;
 }
 
 Increment::Increment( Increment const & Increment ) {
@@ -19,6 +18,5 @@ void Increment::execute( std::vector<Instruction *> & instructions, std::vector<
 	( void )iPtr;
 	( void )chars;
 	++(*cPtr);
-	// std::cout << "increment: " << *cPtr << std::endl;
 	Instruction::execute( instructions, ++iPtr, chars, cPtr );
 }
