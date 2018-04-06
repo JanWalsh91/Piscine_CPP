@@ -6,6 +6,8 @@ int    main ( void ) {
 	
 	int size = 10;
 
+	Array<int> empty;
+
 	Array<int> a( size );
 
 	for( int i = 0; i < size; i++ ) {
@@ -22,8 +24,12 @@ int    main ( void ) {
 		std::cout << "a[" << i << "]: " << a[i] << std::endl; 
 		std::cout << "b[" << i << "]: " << b[i] << std::endl; 
 	}
-
-	a[50];
+	try {
+		a[50];
+	}
+	catch ( std::exception & e ) {
+		std::cout << "Jesus Christ! You're out of range!" << std::endl;
+	}
 
 	return (0);
 }
