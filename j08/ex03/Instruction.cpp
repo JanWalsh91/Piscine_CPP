@@ -15,8 +15,8 @@ Instruction & Instruction::operator=( Instruction const & rhs ) {
 	return *this;
 }
 
-void Instruction::execute( std::list<Instruction *> & instructions, std::list<Instruction *>::iterator & iPtr, std::list<char> & chars, std::list<char>::iterator & cPtr ) {
-	std::cout << "Instruction: execute" << std::endl;
+void Instruction::execute( std::vector<Instruction *> & instructions, std::vector<Instruction *>::iterator & iPtr, std::vector<char> & chars, std::vector<char>::iterator & cPtr ) {
+	// std::cout << "Instruction: execute" << std::endl;
 
 	// chars.push_back(97);
 	// std::cout << *cPtr << std::endl;
@@ -32,6 +32,6 @@ void Instruction::execute( std::list<Instruction *> & instructions, std::list<In
 		(*iPtr)->execute( instructions, iPtr, chars, cPtr );
 	}
 	else {
-		std::cout << "Done" << std::endl;
+		// std::cout << "Done" << std::endl;
 	}
 }

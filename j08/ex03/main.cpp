@@ -9,8 +9,8 @@ int    main ( int ac, char** av ) {
 	// 	return (0);
 	// }
 
-	// std::list<int>						ints;
-	// std::list<int>::iterator			iPtr;
+	// std::vector<int>						ints;
+	// std::vector<int>::iterator			iPtr;
 	// ints.push_back(0);
 	// iPtr = ints.begin();
 	// std::cout << *iPtr << std::endl;

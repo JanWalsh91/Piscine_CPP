@@ -2,7 +2,7 @@
 # define INSTRUCTION_H
 
 # include <iostream>
-# include <list>
+# include <vector>
 
 class Instruction {
 
@@ -13,7 +13,7 @@ class Instruction {
 
 		Instruction & operator=( Instruction const & rhs );
 
-		virtual void execute( std::list<Instruction *> & instructions, std::list<Instruction *>::iterator & iPtr, std::list<char> & chars, std::list<char>::iterator & cPtr );
+		virtual void execute( std::vector<Instruction *> & instructions, std::vector<Instruction *>::iterator & iPtr, std::vector<char> & chars, std::vector<char>::iterator & cPtr );
 };
 
 #endif

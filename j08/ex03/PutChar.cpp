@@ -15,15 +15,15 @@ PutChar & PutChar::operator=( PutChar const & rhs ) {
 	return *this;
 }
 
-void PutChar::execute( std::list<Instruction *> & instructions, std::list<Instruction *>::iterator & iPtr, std::list<char> & chars, std::list<char>::iterator & cPtr ) {
+void PutChar::execute( std::vector<Instruction *> & instructions, std::vector<Instruction *>::iterator & iPtr, std::vector<char> & chars, std::vector<char>::iterator & cPtr ) {
 	// std::cout << "execute putchar" << std::endl;
 	// ( void )iPtr;
 	// ( void )chars;
 	// ( void )instructions;
 	// ( void )cPtr;
-	// std::cout << *cPtr;
-	std::cout << "Print: " << *cPtr << std::endl;
-	std::cout << "\tAsci: "<< *(reinterpret_cast<int *>(&(*cPtr))) << std::endl;
-	std::cout << "\tIndex: " << std::distance(chars.begin(), cPtr) << std::endl;
+	std::cout << *cPtr;
+	// std::cout << "Print: " << *cPtr << std::endl;
+	// std::cout << "\tAsci: "<< *(reinterpret_cast<int *>(&(*cPtr))) << std::endl;
+	// std::cout << "\tIndex: " << std::distance(chars.begin(), cPtr) << std::endl;
 	Instruction::execute( instructions, ++iPtr, chars, cPtr );
 }

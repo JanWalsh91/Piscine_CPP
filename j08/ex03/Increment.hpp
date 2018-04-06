@@ -6,7 +6,7 @@
 # include <string>
 # include <iostream>
 # include <fstream>
-# include <list>
+# include <vector>
 
 class Increment : public Instruction {
 
@@ -17,7 +17,7 @@ class Increment : public Instruction {
 
 		Increment & operator=( Increment const & rhs );
 
-		virtual void execute( std::list<Instruction *> & instructions, std::list<Instruction *>::iterator & iPtr, std::list<char> & chars, std::list<char>::iterator & cPtr );
+		virtual void execute( std::vector<Instruction *> & instructions, std::vector<Instruction *>::iterator & iPtr, std::vector<char> & chars, std::vector<char>::iterator & cPtr );
 };
 
 #endif

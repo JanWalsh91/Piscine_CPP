@@ -15,7 +15,7 @@ OpenLoop & OpenLoop::operator=( OpenLoop const & rhs ) {
 	return *this;
 }
 
-void OpenLoop::execute( std::list<Instruction *> & instructions, std::list<Instruction *>::iterator & iPtr, std::list<char> & chars, std::list<char>::iterator & cPtr ) {
+void OpenLoop::execute( std::vector<Instruction *> & instructions, std::vector<Instruction *>::iterator & iPtr, std::vector<char> & chars, std::vector<char>::iterator & cPtr ) {
 	( void )iPtr;
 	( void )chars;
 	( void )cPtr;
@@ -35,10 +35,10 @@ int OpenLoop::getMatchIndex( void ) const {
 	return this->matchIndex;
 }
 
-void OpenLoop::setMatch( std::list<Instruction *>::iterator it ) {
+void OpenLoop::setMatch( std::vector<Instruction *>::iterator it ) {
 	this->match = it;
 }
 
-std::list<Instruction *>::iterator OpenLoop::getMatch( void ) const {
+std::vector<Instruction *>::iterator OpenLoop::getMatch( void ) const {
 	return this->match;
 }

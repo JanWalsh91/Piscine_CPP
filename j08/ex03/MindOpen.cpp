@@ -13,7 +13,12 @@ MindOpen::MindOpen( MindOpen const & MindOpen ) {
 MindOpen::~MindOpen( void ) {}
 
 MindOpen & MindOpen::operator=( MindOpen const & rhs ) {
-	( void )rhs;
+	this->file = rhs.file;
+	this->instructions = rhs.instructions;
+	this->iPtr = rhs.iPtr;
+	this->chars = rhs.chars;
+	this->cPtr = rhs.fcPtr
+
 	return *this;
 }
 
@@ -34,16 +39,16 @@ void MindOpen::readFile( void ) {
 		std::cout << "error" << std::endl;
 	}
 	this->matchBrackets();
-	this->chars.push_back(97);
+	this->chars.push_back(0);
 	this->cPtr = this->chars.begin();
 	this->iPtr = this->instructions.begin();
 }
 
 void MindOpen::executeProgram( void ) {
 	// std::cout << "execute" << std::endl;
-	this->chars.push_back(98);
+	// this->chars.push_back(98);
 	// this->cPtr++;
-	std::cout << *cPtr << std::endl;
+	// std::cout << *cPtr << std::endl;
 	// exit(0);
 	(*(this->iPtr))->execute( this->instructions, this->iPtr, this->chars, this->cPtr );
 }
@@ -74,12 +79,12 @@ Instruction*	MindOpen::makeInstruction( char c ) {
 void			MindOpen::matchBrackets( void ) {
 	// loop through until you find a Open Bracket
 	bool valid = true;
-	for (std::list<Instruction *>::iterator it = this->instructions.begin(); it != this->instructions.end(); ++it) {
+	for (std::vector<Instruction *>::iterator it = this->instructions.begin(); it != this->instructions.end(); ++it) {
 		OpenLoop * open = dynamic_cast<OpenLoop *>( *it );
 		if ( open ) {
 			valid = false;
 			// std::cout << "Found Open " << std::endl;
-			for (std::list<Instruction *>::iterator it2 = it; it2 != this->instructions.end(); ++it2) {
+			for (std::vector<Instruction *>::iterator it2 = it; it2 != this->instructions.end(); ++it2) {
 				CloseLoop * close = dynamic_cast<CloseLoop *>( *it2 );
 				if ( close && open->getMatchIndex() == close->getMatchIndex() ) {
 					// std::cout << "Found Close " << std::endl;

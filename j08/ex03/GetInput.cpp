@@ -16,7 +16,7 @@ GetInput & GetInput::operator=( GetInput const & rhs ) {
 	return *this;
 }
 
-void GetInput::execute( std::list<Instruction *> & instructions, std::list<Instruction *>::iterator & iPtr, std::list<char> & chars, std::list<char>::iterator & cPtr ) {
+void GetInput::execute( std::vector<Instruction *> & instructions, std::vector<Instruction *>::iterator & iPtr, std::vector<char> & chars, std::vector<char>::iterator & cPtr ) {
 	( void )iPtr;
 	( void )chars;
 	( void )cPtr;

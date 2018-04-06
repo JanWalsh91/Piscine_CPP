@@ -14,16 +14,16 @@
 # include <string>
 # include <iostream>
 # include <fstream>
-# include <list>
+# include <vector>
 
 class MindOpen {
 	private:
 		MindOpen( void );
 		std::string							file;
-		std::list<Instruction *> 			instructions;
-		std::list<Instruction *>::iterator	iPtr;
-		std::list<char>						chars;
-		std::list<char>::iterator			cPtr;
+		std::vector<Instruction *> 			instructions;
+		std::vector<Instruction *>::iterator	iPtr;
+		std::vector<char>						chars;
+		std::vector<char>::iterator			cPtr;
 
 		void			matchBrackets( void );
 

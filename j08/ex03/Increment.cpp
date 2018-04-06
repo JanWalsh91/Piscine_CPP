@@ -15,10 +15,10 @@ Increment & Increment::operator=( Increment const & rhs ) {
 	return *this;
 }
 
-void Increment::execute( std::list<Instruction *> & instructions, std::list<Instruction *>::iterator & iPtr, std::list<char> & chars, std::list<char>::iterator & cPtr ) {
+void Increment::execute( std::vector<Instruction *> & instructions, std::vector<Instruction *>::iterator & iPtr, std::vector<char> & chars, std::vector<char>::iterator & cPtr ) {
 	( void )iPtr;
 	( void )chars;
 	++(*cPtr);
-	// std::cout << "execute increment" << std::endl;
+	// std::cout << "increment: " << *cPtr << std::endl;
 	Instruction::execute( instructions, ++iPtr, chars, cPtr );
 }

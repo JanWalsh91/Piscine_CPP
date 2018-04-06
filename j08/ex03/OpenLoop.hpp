@@ -6,7 +6,7 @@
 # include <string>
 # include <iostream>
 # include <fstream>
-# include <list>
+# include <vector>
 
 class OpenLoop : public Instruction {
 
@@ -17,16 +17,16 @@ class OpenLoop : public Instruction {
 
 		OpenLoop & operator=( OpenLoop const & rhs );
 
-		void execute( std::list<Instruction *> & instructions, std::list<Instruction *>::iterator & iPtr, std::list<char> & chars, std::list<char>::iterator & cPtr );
+		void execute( std::vector<Instruction *> & instructions, std::vector<Instruction *>::iterator & iPtr, std::vector<char> & chars, std::vector<char>::iterator & cPtr );
 
 		void setMatchIndex( int i );
 		int  getMatchIndex( void ) const;
-		void setMatch( std::list<Instruction *>::iterator );
-		std::list<Instruction *>::iterator getMatch( void ) const;
+		void setMatch( std::vector<Instruction *>::iterator );
+		std::vector<Instruction *>::iterator getMatch( void ) const;
 	
 	private:
 		int matchIndex;
-		std::list<Instruction *>::iterator match;
+		std::vector<Instruction *>::iterator match;
 };
 
 #endif
