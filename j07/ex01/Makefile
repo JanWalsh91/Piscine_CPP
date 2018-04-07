@@ -10,11 +10,11 @@ OBJ_NAME = $(SRC_NAME:.cpp=.o)
 
 all: $(NAME)
 
+%.o : %.cpp
+	@$(CC) $(CFLAGS) -c -o $@ $^
+
 $(NAME): $(OBJ_NAME)
 	@$(CC) $(CFLAGS) $^ -o $@
-
-$(OBJ)%.o: $(SRC)%.c
-	@$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
 	@-/bin/rm -f $(OBJ_NAME)

@@ -1,20 +1,24 @@
-NAME = convert
+NAME = ex04
 
 CC = clang++
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRC_NAME = main.cpp Input.cpp
+SRC_NAME = main.cpp \
+			token.cpp \
+			operator.cpp \
+			parenth.cpp \
+			number.cpp
 
 OBJ_NAME = $(SRC_NAME:.cpp=.o)
 
 all: $(NAME)
 
+%.o : %.cpp
+	@$(CC) $(CFLAGS) -c -o $@ $^
+
 $(NAME): $(OBJ_NAME)
 	@$(CC) $(CFLAGS) $^ -o $@
-
-$(OBJ)%.o: $(SRC)%.c
-	@$(CC) $(CFLAGS) -o $@ -c $<
 
 clean:
 	@-/bin/rm -f $(OBJ_NAME)

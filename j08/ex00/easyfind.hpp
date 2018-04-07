@@ -3,24 +3,15 @@
 
 # include <algorithm>
 # include <exception>
-
-class NotFoundException: public std::exception
-{
-  virtual const char* what() const throw()
-  {
-    return "Value not found";
-  }
-};
+# include <iostream>
 
 template< typename T >
 int & easyfind( T & t, int i ) {
 
-	typename T::iterator it = t.begin();
-
-	it = std::find(it, t.end(), i);
+	typename T::iterator it = std::find(t.begin(), t.end(), i);
 
 	if (it == t.end()) {
-		throw NotFoundException();
+		throw std::logic_error("Element not found");
 	}
 
 	return *it;

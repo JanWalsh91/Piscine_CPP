@@ -16,9 +16,8 @@ Input::Input( std::string input ) : _type(""), _char(' '), _int(0), _float(0.0),
 		this->_impossible = true;
 	}
 	
-	if ( input.length() > 1 && input.find('.') ) {
+	if ( input.length() > 1 && input.find('.') != std::string::npos) {
 		std::string substr = input.substr(input.find("."));
-		std::cout << substr << std::endl;
 		this->_precision = substr.length() - 1;
 		if ( this->_precision == 0 ) {
 			this->_precision = 1;

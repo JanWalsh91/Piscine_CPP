@@ -28,11 +28,19 @@ Span &    Span::operator=( Span const & rhs ) {
 }
 
 void Span::addNumber( int n ) {
-	if ( this->_set.size() >= this->_N ) {
+	if ( this->_set.size() + 1 > this->_N ) {
 		throw( Span::FullException() );
 	}
 	++(this->_C);
 	this->_set.insert(n);
+}
+
+void Span::addNumbers( int n[], int count ) {
+	if ( this->_set.size() + count > this->_N ) {
+		throw( Span::FullException() );
+	}
+	this->_C += count;
+	this->_set.insert(n, n + count);
 }
 
 int Span::shortestSpan( void ) {
@@ -72,10 +80,40 @@ int Span::longestSpan( void ) {
 	return *( itend ) - *( this->_set.begin() );
 }
 
+/* ========== FullException ========== */
+
+Span::FullException::FullException( void ) {}
+
+Span::FullException::FullException( Span::FullException const & e ) {
+	*this = e;
+}
+
+Span::FullException::~FullException( void ) throw() {}
+
+Span::FullException &    Span::FullException::operator=( Span::FullException const & rhs ) throw() {
+	( void )rhs;
+	return *this;
+}
+
 const char* Span::FullException::what() const throw() {
 	return "Span is full";
-};
+}
+
+/* ========== NotEnoughElementsToCompareException ========== */
+
+Span::NotEnoughElementsToCompareException::NotEnoughElementsToCompareException( void ) {}
+
+Span::NotEnoughElementsToCompareException::NotEnoughElementsToCompareException( Span::NotEnoughElementsToCompareException const & e ) {
+	*this = e;
+}
+
+Span::NotEnoughElementsToCompareException::~NotEnoughElementsToCompareException( void ) throw() {}
+
+Span::NotEnoughElementsToCompareException &    Span::NotEnoughElementsToCompareException::operator=( Span::NotEnoughElementsToCompareException const & rhs ) throw() {
+	( void )rhs;
+	return *this;
+}
 
 const char* Span::NotEnoughElementsToCompareException::what() const throw() {
 	return "Not enough elements to compare";
-};
+}

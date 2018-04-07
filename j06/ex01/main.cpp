@@ -11,54 +11,56 @@ int		random_num( void );
 int		main ( void ) {
 	std::srand(std::time(nullptr));
 	void * array = serialize();
+	std::cout << "\n" << std::endl;
 	Data * data = deserialize(array);
-	std::cout << data->s1 << std::endl;
-	std::cout << data->n << std::endl;
-	std::cout << data->s2 << std::endl;
+
+	std::cout << "s1: \t" << data->s1 << std::endl;
+	std::cout << "n: \t" << data->n << std::endl;
+	std::cout << "s2: \t" << data->s2 << std::endl;
 	return (0);
 }
 
 void *	serialize( void ) {
+	std::cout << "==  serialize  ==\n" << std::endl;
 	char *	array = new char[20];
 
-	for ( int i = 0; i < 8; i++ ) {
+	for ( int i = 0; i < 8; ++i ) {
 		array[i] = random_alphanum();
 	}
-	array[8] = random_num();
-	for ( int i = 12; i < 20; i++ ) {
+	int *p = reinterpret_cast<int *>(&(array[8]));
+	*p = (random_num());
+	for ( int i = 12; i < 20; ++i ) {
 		array[i] = random_alphanum();
 	}
 
-	for (int i = 0; i < 20; i++) {
-		std::cout << i << "\t- ";
+	for ( int i = 0; i < 20; ++i ) {
+		std::cout << i << ":\t";
 		if (i == 8) {
-			std::cout << static_cast<int>(array[i]) << std::endl;
+			std::cout << *(reinterpret_cast<int*>(p)) << std::endl;
 		} else {
 			std::cout << array[i] << std::endl;
 		}
 	}
 	return reinterpret_cast<void *>(array);
-};
+}
 
 Data *	deserialize( void * raw ) {
-	std::cout << "deserialize" << std::endl;
+	std::cout << "== deserialize ==\n" << std::endl;
 	Data * data = new Data();
 	data->s1.assign( reinterpret_cast<char *>(raw), 0, 8 );
 	data->n = * reinterpret_cast<int *> ( &reinterpret_cast<char *>(raw)[8] );
 	data->s2.assign( &(reinterpret_cast<char *>(raw)[12]), 8 );
-	std::cout << "deserialize DONE" << std::endl;
 	return data;
 }
 
 char	random_alphanum( void ) {
     static const char alphanum[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-
-	char c = alphanum[rand() % (sizeof(alphanum) - 1)];
+	char c = alphanum[std::rand() % (sizeof(alphanum) - 1)];
 	return c;
 }
 
 int		random_num( void ) {
-	int i = rand() % 1000;
-	std::cout << i << std::endl;
-	return i;
+	int n = std::rand() % 2 ? 1 : -1;
+	int i = std::rand() % 1000;
+	return n * i;
 }

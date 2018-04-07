@@ -26,7 +26,7 @@ class Array {
 			_size( array.size() ) {
 
 			this->_a = new T[ this->size() ];
-			for ( int i = 0; i < this->size(); i++ ) {
+			for ( unsigned int i = 0; i < this->size(); i++ ) {
 				this->_a[i] = array._a[i];
 			}
 			std::cout << "Copy constructor called" << std::endl;
@@ -45,14 +45,14 @@ class Array {
 				delete [] this->_a;
 				this->_size = rhs.size();
 				this->_a = new T[ this->size() ];
-				for ( int i = 0; i < this->size(); i++ ) {
+				for ( unsigned int i = 0; i < this->size(); i++ ) {
 					this->_a[i] = rhs._a[i];
 				}
 			}
 			return (*this);
 		};
 
-		T &		operator[]( int x ) {
+		T &		operator[]( unsigned int x ) {
 			if ( x >= this->size() ) {
 				throw ( std::out_of_range("Out of range") );
 			}

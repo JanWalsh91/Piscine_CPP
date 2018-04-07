@@ -4,22 +4,30 @@
 
 int    main ( void ) {
 	
-	Span span(5);
+	Span span(6);
 
-	// for ( int i = 0; i < 5; ++i ) {
-	// 	span.addNumber( i * (i + 2) + 2 );
-	// }
+	span.addNumber(10);
+	try {
+		std::cout << "shortest: " << span.shortestSpan() << std::endl;
+	}
+	catch ( std::exception & e ) {
+		std::cout << e.what() << std::endl;
+	}
 
-	span.addNumber(3654056);
 	span.addNumber(50);
-	span.addNumber(5);
-	span.addNumber(50);
-	span.addNumber(1560);
+	
+	int list[] = {20, -10, 1654, 130};
+	span.addNumbers(list, 4);
 
 	std::cout << "shortest: " << span.shortestSpan() << std::endl;
-
 	std::cout << "longest: " << span.longestSpan() << std::endl;
 
+	try {
+		span.addNumber(1);
+	}
+	catch ( std::exception & e ) {
+		std::cout << e.what() << std::endl;
+	}
 
 	return (0);
 }

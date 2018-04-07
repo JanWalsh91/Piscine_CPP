@@ -18,12 +18,9 @@ int		main ( void ) {
 	array[1] = 2;
 	array[2] = 3;
 
-	iter<int, void>( array, 3, print<int> );
-	iter<int, void>( array, 3, add10<int> );
-	iter<int, void>( array, 3, print<int> );
+	iter( array, 3, print );
+	iter( array, 3, add10 );
+	iter( array, 3, print );
 
-	// for ( int i = 0; i < 3; i++ ) {
-	// 	std::cout << array[i] << std::endl;
-	// }
 	return (0);
 }

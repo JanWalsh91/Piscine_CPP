@@ -17,12 +17,13 @@ class Input {
 		float		_float;
 		double		_double;
 		bool		_impossible;
+		int			_precision;
 		Input( void );
 
 	public:
 		Input( std::string input );
 		Input( Input const & input );
-		~Input( void );
+		virtual ~Input( void );
 
 		std::string	getType( void ) const;
 
